@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reveal.js Quick Demo</title>
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+  <!-- Code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #080b12;
+      --text: #f8fafc;
+      --muted: #a7b0c2;
+      --cyan: #5eead4;
+      --blue: #60a5fa;
+      --violet: #a78bfa;
+      --pink: #f472b6;
+      --glass: rgba(255, 255, 255, 0.08);
+      --stroke: rgba(255, 255, 255, 0.18);
+    }
+
+    .reveal {
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(96, 165, 250, 0.25), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(167, 139, 250, 0.22), transparent 30%),
+        radial-gradient(circle at 50% 95%, rgba(94, 234, 212, 0.18), transparent 35%),
+        var(--bg);
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      font-family: "Inter", system-ui, sans-serif;
+      text-transform: none;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+      line-height: 0.95;
+    }
+
+    .reveal h1 {
+      font-size: 3.3em;
+    }
+
+    .reveal h2 {
+      font-size: 2.2em;
+    }
+
+    .reveal h3 {
+      color: var(--cyan);
+      font-size: 1.1em;
+    }
+
+    .reveal p,
+    .reveal li {
+      color: var(--muted);
+      font-size: 0.7em;
+      line-height: 1.45;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .eyebrow {
+      font-size: 0.34em;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.07);
+      color: white;
+      font-size: 0.42em;
+      font-weight: 700;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .card {
+      min-height: 210px;
+      padding: 26px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.14);
+      text-align: left;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.25);
+    }
+
+    .card .icon {
+      font-size: 1.2em;
+      display: inline-flex;
+      width: 56px;
+      height: 56px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: rgba(94,234,212,0.14);
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 0.45em;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      border-radius: 30px;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.35);
+      backdrop-filter: blur(18px);
+      padding: 34px;
+    }
+
+    .big-number {
+      font-size: 6em;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      background: linear-gradient(180deg, white, rgba(255,255,255,0.08));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 0.8;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 44px;
+    }
+
+    .step {
+      padding: 22px 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      text-align: left;
+    }
+
+    .step b {
+      display: block;
+      font-size: 0.5em;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 0.38em;
+    }
+
+    .device {
+      position: relative;
+      height: 440px;
+      border-radius: 42px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(96,165,250,0.25), rgba(167,139,250,0.18));
+      border: 1px solid rgba(255,255,255,0.18);
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 40px 90px rgba(0,0,0,0.35);
+    }
+
+    .device::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0 14%, rgba(255,255,255,0.06) 14% 15%, transparent 15% 100%),
+        linear-gradient(0deg, transparent 0 14%, rgba(255,255,255,0.06) 14% 15%, transparent 15% 100%);
+      background-size: 70px 70px;
+      opacity: 0.5;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      box-shadow: 0 0 60px currentColor;
+      animation: float 7s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      width: 145px;
+      height: 145px;
+      color: var(--cyan);
+      background: var(--cyan);
+      left: 42px;
+      top: 70px;
+      opacity: 0.75;
+    }
+
+    .orb.two {
+      width: 110px;
+      height: 110px;
+      color: var(--violet);
+      background: var(--violet);
+      right: 70px;
+      top: 155px;
+      opacity: 0.82;
+      animation-delay: -2s;
+    }
+
+    .orb.three {
+      width: 80px;
+      height: 80px;
+      color: var(--pink);
+      background: var(--pink);
+      left: 170px;
+      bottom: 75px;
+      opacity: 0.8;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(-16px) translateX(-6px) scale(1);
+      }
+
+      to {
+        transform: translateY(18px) translateX(12px) scale(1.08);
+      }
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      overflow: hidden;
+      margin-top: 18px;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
+      border-radius: inherit;
+      transition: width 0.8s cubic-bezier(0.2, 0.9, 0.2, 1);
+    }
+
+    .present .bar.w92 {
+      width: 92%;
+    }
+
+    .present .bar.w80 {
+      width: 80%;
+    }
+
+    .present .bar.w65 {
+      width: 65%;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 0.4em !important;
+      margin-top: 14px;
+    }
+
+    pre code {
+      font-family: "JetBrains Mono", monospace !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 -->
+      <section
+        data-transition="zoom"
+        data-background-gradient="linear-gradient(135deg, #08111f, #140821)"
+      >
+        <div class="eyebrow">Quick Reveal.js Demo</div>
+
+        <h1>
+          HTML slides can feel<br>
+          <span class="gradient-text">less like PowerPoint</span>
+        </h1>
+
+        <p>
+          Use arrow keys, space, or swipe. Press <strong>Esc</strong> for overview.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">Animated fragments</span>
+          <span class="pill">Web typography</span>
+          <span class="pill">Code + media</span>
+          <span class="pill">Vertical sections</span>
+        </div>
+      </section>
+
+      <!-- Slide 2 -->
+      <section data-auto-animate>
+        <h2>One idea, staged clearly.</h2>
+
+        <div class="grid-3">
+          <div class="card fragment fade-up">
+            <div class="icon">🎬</div>
+            <h3>Hook</h3>
+            <p>Open with motion, contrast, or a concrete problem.</p>
+          </div>
+
+          <div class="card fragment fade-up">
+            <div class="icon">🧠</div>
+            <h3>Method</h3>
+            <p>Reveal the model pipeline step by step.</p>
+          </div>
+
+          <div class="card fragment fade-up">
+            <div class="icon">🚀</div>
+            <h3>Demo</h3>
+            <p>Switch from explanation to live product presentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3 -->
+      <section data-auto-animate>
+        <div class="split">
+          <div>
+            <div class="eyebrow">Auto-Animate</div>
+            <h2>Same objects can move between slides.</h2>
+            <p>
+              Reveal.js can morph layout positions, sizes, and text for smooth visual continuity.
+            </p>
+          </div>
+
+          <div class="glass" data-id="metric-card">
+            <div class="big-number">72%</div>
+            <p>
+              <strong>Attention retained</strong><br>
+              when the presentation guides the eye instead of dumping all content at once.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4 -->
+      <section data-auto-animate>
+        <div class="glass" data-id="metric-card" style="max-width: 760px; margin: 0 auto; text-align: left;">
+          <div class="big-number">72%</div>
+          <h2 style="margin-top: 0;">becomes the main visual.</h2>
+          <p>The layout itself is part of the storytelling.</p>
+        </div>
+      </section>
+
+      <!-- Slide 5 with vertical slides -->
+      <section>
+        <section>
+          <div class="eyebrow">Vertical Slides</div>
+          <h2>
+            Go down for detail.<br>
+            Go right for the next idea.
+          </h2>
+          <p>This is useful for optional explanations during Q&A.</p>
+          <p>Press ↓ now.</p>
+        </section>
+
+        <section data-background-color="#07111f">
+          <h2>Detail layer</h2>
+
+          <div class="timeline">
+            <div class="step fragment">
+              <b>1. Input</b>
+              <span>Dialogue context</span>
+            </div>
+
+            <div class="step fragment">
+              <b>2. Encoder</b>
+              <span>VAD / appraisal</span>
+            </div>
+
+            <div class="step fragment">
+              <b>3. Dynamics</b>
+              <span>GRU update</span>
+            </div>
+
+            <div class="step fragment">
+              <b>4. Output</b>
+              <span>Emotion-aware reply</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Slide 6 -->
+      <section>
+        <div class="split">
+          <div>
+            <div class="eyebrow">CSS Motion</div>
+            <h2>Visual design can be built directly into the deck.</h2>
+            <p>
+              Because this is HTML, you can use gradients, animations, custom fonts,
+              embedded charts, iframes, videos, and interactive UI-like demos.
+            </p>
+          </div>
+
+          <div class="device">
+            <div class="orb one"></div>
+            <div class="orb two"></div>
+            <div class="orb three"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7 -->
+      <section>
+        <h2>Animated data emphasis</h2>
+
+        <div class="glass" style="text-align: left; max-width: 850px; margin: 0 auto;">
+          <p><strong>Visual polish</strong></p>
+          <div class="progress-wrap">
+            <div class="bar w92"></div>
+          </div>
+          <p class="caption">Custom typography, spacing, background, and motion.</p>
+
+          <p><strong>Technical explanation</strong></p>
+          <div class="progress-wrap">
+            <div class="bar w80"></div>
+          </div>
+          <p class="caption">Step-by-step fragments and diagrams.</p>
+
+          <p><strong>Live demo integration</strong></p>
+          <div class="progress-wrap">
+            <div class="bar w65"></div>
+          </div>
+          <p class="caption">Can embed videos, charts, websites, or Gradio screen recordings.</p>
+        </div>
+      </section>
+
+      <!-- Slide 8 -->
+      <section>
+        <div class="eyebrow">Code Slides</div>
+        <h2>It can also present implementation.</h2>
+
+        <pre>
+          <code data-trim data-line-numbers="1-2|4-8|10-13" class="language-js">
+Reveal.initialize({
+  hash: true,
+
+  transition: "slide",
+  backgroundTransition: "fade",
+  controls: true,
+  progress: true,
+  center: true,
+
+  plugins: [
+    RevealHighlight,
+    RevealNotes
+  ]
+});
+          </code>
+        </pre>
+
+        <p>Press right to highlight different code regions.</p>
+      </section>
+
+      <!-- Slide 9 -->
+      <section
+        data-background-image="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80"
+        data-background-opacity="0.28"
+      >
+        <div class="glass" style="max-width: 850px; margin: 0 auto;">
+          <div class="eyebrow">Background Media</div>
+          <h2>Slides can use images, video, or embedded demos.</h2>
+          <p>
+            For your research project, this could become a polished hybrid of
+            paper explanation, product demo, and website.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 10 -->
+      <section
+        data-transition="convex"
+        data-background-gradient="linear-gradient(135deg, #020617, #172554, #3b0764)"
+      >
+        <h2>Potential use for your project</h2>
+
+        <div class="timeline">
+          <div class="step">
+            <b>Hook</b>
+            <span>Emotion mismatch in dialogue</span>
+          </div>
+
+          <div class="step">
+            <b>Research</b>
+            <span>VAD, appraisal, dialogue emotion</span>
+          </div>
+
+          <div class="step">
+            <b>System</b>
+            <span>Regressor → GRU → LLM</span>
+          </div>
+
+          <div class="step">
+            <b>Demo</b>
+            <span>Baseline vs emotion-aware arena</span>
+          </div>
+        </div>
+
+        <p>
+          This format is strongest when you want a 20-minute technical story
+          with live-demo energy.
+        </p>
+      </section>
+
+      <!-- Final Slide -->
+      <section>
+        <h1><span class="gradient-text">End.</span></h1>
+        <p>
+          Press <strong>S</strong> for speaker notes.
+          Press <strong>Esc</strong> for slide overview.
+        </p>
+
+        <aside class="notes">
+          Speaker notes are built in. You can use this area for your 20-minute
+          presentation script while the audience only sees the main slide.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: true,
+      slideNumber: "c/t",
+
+      transition: "slide",
+      backgroundTransition: "fade",
+
+      autoAnimateEasing: "cubic-bezier(.2,.9,.2,1)",
+      autoAnimateDuration: 0.9,
+
+      plugins: [
+        RevealHighlight,
+        RevealNotes
+      ]
+    });
+  </script>
+</body>
+</html>

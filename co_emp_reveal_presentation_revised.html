@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Co-EmP — Context-aware Emotion and Personality Alignment</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme" />
+  <style>
+    :root{
+      --bg:#f7f7f4; --paper:#ffffff; --ink:#1e2430; --muted:#687084; --subtle:#8a91a3;
+      --line:#dfe3ea; --line2:#eef1f5; --blue:#315a9c; --blue2:#e9f0fb;
+      --green:#2f6f5e; --green2:#e8f3ef; --amber:#a4661f; --amber2:#f8efe3;
+      --red:#9d4b54; --red2:#f7e9eb; --violet:#615a97; --violet2:#eeecf8;
+      --shadow:0 18px 42px rgba(28,36,48,.08); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{background:var(--bg)}
+    .reveal{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(135deg,#fbfbf9 0%,#f4f5f1 100%);
+      font-size:16px;
+    }
+    .reveal .slides{text-align:left}
+    .reveal section{
+      padding:38px 58px 68px 58px;
+      height:720px;
+      overflow:hidden;
+    }
+    .reveal h1,.reveal h2,.reveal h3,.reveal p,.reveal li{font-family:inherit;text-transform:none;color:var(--ink)}
+    .reveal h1{font-size:46px;line-height:1.08;font-weight:620;letter-spacing:-.018em;margin:0 0 14px 0;max-width:860px}
+    .reveal h2{font-size:30px;line-height:1.16;font-weight:620;letter-spacing:-.012em;margin:0 0 18px 0}
+    .reveal h3{font-size:19px;line-height:1.2;font-weight:620;margin:0 0 8px 0;color:#2a3240}
+    .reveal p{font-size:18px;line-height:1.46;margin:0 0 11px 0;color:#303846}
+    .reveal li{font-size:17px;line-height:1.38;margin:5px 0;color:#303846}
+    .reveal ul{margin:0 0 0 22px;padding:0}.reveal ol{margin:0 0 0 24px;padding:0}
+    .small{font-size:14px!important;line-height:1.35!important;color:var(--muted)!important}.micro{font-size:12px!important;line-height:1.28!important;color:var(--muted)!important}
+    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important}.muted{color:var(--muted)!important}.subtle{color:var(--subtle)!important}
+    .blue{color:var(--blue)!important}.green{color:var(--green)!important}.amber{color:var(--amber)!important}.red{color:var(--red)!important}.violet{color:var(--violet)!important}
+    .kicker{font-size:12px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+    .section-tag{position:absolute;top:24px;right:56px;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#9aa1ad;font-weight:650}
+    .content{height:566px;position:relative}.title-content{height:540px;display:flex;align-items:center}.two{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}.two.leftwide{grid-template-columns:1.12fr .88fr}.two.rightwide{grid-template-columns:.88fr 1.12fr}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.four{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stack{display:flex;flex-direction:column;gap:14px}.row{display:flex;align-items:center;gap:14px}.spread{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .panel{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}.soft{box-shadow:none;background:rgba(255,255,255,.68)}
+    .note{border-left:4px solid var(--blue);background:var(--blue2);border-radius:0 14px 14px 0;padding:14px 16px;font-size:17px;line-height:1.42}.note.green{border-color:var(--green);background:var(--green2);color:var(--ink)!important}.note.amber{border-color:var(--amber);background:var(--amber2);color:var(--ink)!important}.note.red{border-color:var(--red);background:var(--red2);color:var(--ink)!important}
+    .divider{height:1px;background:var(--line);margin:16px 0}.label{display:inline-block;font-size:12px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;color:#626a78;margin-bottom:8px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:white;font-size:13px;font-weight:600;color:#364152;white-space:nowrap}.pill.blue{background:var(--blue2);border-color:#cad8ee;color:var(--blue)!important}.pill.green{background:var(--green2);border-color:#cfe3dc;color:var(--green)!important}.pill.amber{background:var(--amber2);border-color:#ead7bd;color:var(--amber)!important}.pill.red{background:var(--red2);border-color:#ead2d5;color:var(--red)!important}
+    .bigline{font-size:34px;font-weight:610;line-height:1.22;letter-spacing:-.016em}.goal{max-width:830px;margin:auto;font-size:34px;line-height:1.22;font-weight:560;text-align:left;color:#263142}.emph{background:linear-gradient(120deg,rgba(49,90,156,.14),rgba(49,90,156,.04));border-radius:5px;padding:0 .12em}
+    .quote{font-size:24px;line-height:1.28;font-weight:520;color:#263142}.bigword{font-size:42px;font-weight:570;letter-spacing:-.02em}
+    .centerbox{height:100%;display:flex;align-items:center;justify-content:center}.code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;background:#17202c;color:#e7edf5;border-radius:14px;padding:16px;font-size:13px;line-height:1.34;white-space:pre-wrap;box-shadow:0 14px 32px rgba(0,0,0,.12);overflow:hidden}.code.light{background:#f7f8fb;color:#283142;border:1px solid var(--line);box-shadow:none}.code.tight{font-size:12px;line-height:1.27;padding:13px}
+    .tiny-table{width:100%;border-collapse:collapse;font-size:14px}.tiny-table th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#697386;text-align:left;border-bottom:1px solid var(--line);padding:8px}.tiny-table td{border-bottom:1px solid var(--line2);padding:8px;vertical-align:top;color:#303846}.tiny-table strong{font-weight:620}
+    .ref-table{font-size:13px}.ref-table td{padding:6px 8px}.ref-table .title{font-weight:600;color:#263142}
+    .bars{display:grid;gap:8px}.bar-row{display:grid;grid-template-columns:112px 1fr 42px;gap:10px;align-items:center;font-size:13px;color:#485264}.track{height:10px;background:#edf0f5;border-radius:999px;overflow:hidden}.fill{height:100%;background:var(--blue);border-radius:999px}.fill.green{background:var(--green)}.fill.amber{background:var(--amber)}.fill.red{background:var(--red)}.fill.violet{background:var(--violet)}
+    .metric-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:white}.metric-card .num{font-size:26px;font-weight:620;letter-spacing:-.02em;color:#263142}.metric-card .cap{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .pipeline{display:grid;grid-template-columns:1fr 42px 1fr 42px 1fr 42px 1fr;align-items:center;gap:8px;margin-top:26px}.node{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px;text-align:center;min-height:94px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}.node .icon{font-size:24px;margin-bottom:6px}.arrow{text-align:center;color:#8b96a8;font-size:26px}.node small{color:var(--muted);font-size:12px}.node strong{font-size:17px;font-weight:620;color:#263142}
+    .chat{display:grid;gap:10px;max-width:660px;margin:auto}.bubble{max-width:76%;padding:11px 14px;border-radius:16px;border:1px solid var(--line);background:white;font-size:15px;line-height:1.32;color:#2d3543}.bubble.a{justify-self:start;border-top-left-radius:5px}.bubble.b{justify-self:end;background:#eef4ff;border-color:#d5e2f7;border-top-right-radius:5px}.bubble.pending{justify-self:start;background:#f5ede4;border-color:#e7d4be;border-style:dashed}.avatar{font-size:12px;font-weight:650;color:#677083;margin-bottom:3px}.focus-context .bubble:not(.pending){outline:3px solid rgba(49,90,156,.13)}.mood-dot{width:15px;height:15px;border-radius:50%;display:inline-block;background:linear-gradient(135deg,var(--red),var(--amber));box-shadow:0 0 0 7px rgba(157,75,84,.09)}
+    .person-row{display:grid;grid-template-columns:94px 1fr;gap:10px;align-items:center;margin-top:8px}.face{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#e9eef8,#fff);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:25px}.trait-bars .bar-row{grid-template-columns:78px 1fr 28px}
+    .vad-axis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}.axis-card{border:1px solid var(--line);border-radius:16px;background:white;padding:16px;min-height:160px}.axis-title{font-size:19px;font-weight:620;margin-bottom:6px}.axis-scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px}.axis-line{height:7px;border-radius:999px;background:linear-gradient(90deg,#cad0db,#6387c4,#254c88);margin:13px 0 9px}.axis-card:nth-child(2) .axis-line{background:linear-gradient(90deg,#d7dce5,#d6a857,#a65e21)}.axis-card:nth-child(3) .axis-line{background:linear-gradient(90deg,#d5d9e2,#8895ac,#2d3a50)}
+    .vad-demo{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}.vad-text{font-size:17px;line-height:1.38}.vad-nums{display:grid;gap:9px}.vad-nums .bar-row{grid-template-columns:34px 1fr 38px}.architecture{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;gap:8px;align-items:center;margin-top:12px}.archbox{padding:14px;border:1px solid var(--line);border-radius:14px;background:white;text-align:center;min-height:88px;display:flex;flex-direction:column;justify-content:center}.archbox strong{font-size:16px}.archbox small{font-size:12px;color:var(--muted)}
+    .dataset-card{border:1px solid var(--line);border-radius:16px;background:white;padding:14px;min-height:146px}.dataset-card .source{font-size:18px;font-weight:620;margin-bottom:6px}.example{font-size:13px;line-height:1.34;color:#414a59;background:#f7f8fb;border:1px solid #e8ebf0;padding:9px;border-radius:10px;margin-top:7px}
+    .synth-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.mini-json{background:#f7f8fb;border:1px solid var(--line);border-radius:13px;padding:11px;font-family:"SFMono-Regular",Consolas,monospace;font-size:11px;line-height:1.33;color:#2f3745;min-height:236px}.dialogue-mini{display:grid;gap:8px}.dialogue-mini .line{font-size:13px;border:1px solid var(--line);border-radius:12px;padding:8px;background:#fff}.line .tag{font-weight:650;color:var(--blue)}
+    .gru-cell{position:relative;height:250px;border:1px solid var(--line);border-radius:24px;background:white;box-shadow:var(--shadow);margin-top:20px}.gate{position:absolute;border:1px solid var(--line);border-radius:14px;background:#f7f8fb;padding:9px 12px;font-size:14px;font-weight:600}.g1{left:72px;top:62px}.g2{left:250px;top:62px}.g3{left:428px;top:62px}.hprev{position:absolute;left:70px;bottom:48px}.hnext{position:absolute;right:70px;bottom:48px}.flow{position:absolute;left:160px;right:160px;bottom:58px;height:2px;background:#b9c2d0}.flow:after{content:"";position:absolute;right:-2px;top:-5px;border-left:10px solid #b9c2d0;border-top:6px solid transparent;border-bottom:6px solid transparent}.inputx{position:absolute;left:280px;bottom:24px;color:var(--blue);font-weight:650;font-size:15px}
+    .formula{font-family:"SFMono-Regular",Consolas,monospace;font-size:19px;line-height:1.65;background:#f7f8fb;border:1px solid var(--line);border-radius:16px;padding:18px;color:#2d3543}.defs{font-size:14px;line-height:1.38;color:#4a5362}.defs div{margin-bottom:7px}.var{font-family:"SFMono-Regular",Consolas,monospace;color:var(--blue);font-weight:650}.time-diagram{height:390px;position:relative;border:1px solid var(--line);border-radius:20px;background:white;overflow:hidden}.timeline{position:absolute;left:80px;right:80px;top:190px;height:2px;background:#cbd2dd}.tick{position:absolute;top:177px;width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #cbd2dd;text-align:center;line-height:26px;font-size:12px;font-weight:650;color:#4b5565}.tick.tminus{left:190px}.tick.t{right:190px;border-color:var(--blue);color:var(--blue)}.srcbox{position:absolute;border:1px solid var(--line);border-radius:14px;background:#f7f8fb;padding:11px 13px;font-size:14px}.src1{left:92px;top:72px}.src2{right:84px;top:72px}.src3{right:278px;bottom:68px}.src4{left:332px;bottom:48px}.target{position:absolute;right:88px;top:235px;background:var(--blue2);border-color:#c7d7ee;color:var(--blue)}
+    .prompt-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px}.prompt-points li{font-size:16px}.mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.mode{background:white;border:1px solid var(--line);border-radius:16px;padding:14px;min-height:160px}.mode .num{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:650}.mode h3{margin-top:4px}.browser{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.browser-top{height:34px;border-bottom:1px solid var(--line);display:flex;gap:6px;align-items:center;padding:0 12px;background:#f7f8fb}.dot{width:9px;height:9px;border-radius:50%;background:#c9ced8}.demo-body{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}.demo-pane{border:1px solid var(--line);border-radius:14px;min-height:228px;padding:12px;background:#fcfcfd}.demo-pane h3{font-size:16px}.limitation{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;border:1px solid var(--line);background:white;border-radius:18px;padding:18px}.lim-num{width:38px;height:38px;border-radius:50%;background:var(--red2);color:var(--red);display:flex;align-items:center;justify-content:center;font-weight:650}
+    .current-visible.fragment:not(.current-fragment){opacity:0!important;visibility:hidden}.fragment.fade-in-then-out.visible:not(.current-fragment){opacity:0!important;visibility:hidden}
+    .hook-stage{position:relative;height:420px;margin-top:36px}.fixed-token{position:absolute;left:50%;top:190px;transform:translate(-50%,-50%);font-size:42px;font-weight:560;letter-spacing:-.02em;color:#1f2937;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 20px;box-shadow:var(--shadow);z-index:2;white-space:nowrap}.ctx-row{position:absolute;left:0;right:0;top:190px;display:grid;grid-template-columns:1fr 205px 1fr;gap:16px;align-items:center;transform:translateY(-50%);font-size:22px;line-height:1.28;color:#344050}.ctx-row .pre{text-align:right}.ctx-row .post{text-align:left}.ctx-row .pre,.ctx-row .post{max-width:430px}.ctx-caption{position:absolute;left:50%;top:275px;transform:translateX(-50%);font-size:15px;color:var(--muted);text-align:center;width:800px}
+    .token-stage{position:relative;height:412px}.slots{position:absolute;left:50%;top:155px;transform:translateX(-50%);display:grid;grid-template-columns:128px 128px 128px;gap:6px;align-items:center;justify-content:center}.slot{height:66px;border-bottom:2px solid #cfd6e0;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:560;letter-spacing:-.02em;color:#263142}.slot.done{color:var(--blue);border-color:#96afd2}.predbox{position:absolute;top:232px;left:50%;transform:translateX(-50%);width:360px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px}.predbox h3{font-size:15px;margin-bottom:8px}.preds{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 12px}.preds div{font-size:13px;color:#4a5362}.preds strong{color:var(--blue)}.complete-phrase{position:absolute;left:50%;top:155px;transform:translateX(-50%);font-size:38px;font-weight:560;color:var(--green);letter-spacing:-.02em;white-space:nowrap}.no-bottom{margin-bottom:0!important}
+  </style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <div class="section-tag">Senior Project</div>
+  <div class="title-content">
+    <div style="max-width:900px">
+      <div class="kicker">Emotion dynamics · personality · dialogue generation</div>
+      <h1>Co-EmP: Context-aware Emotion and Personality Alignment</h1>
+      <p style="font-size:20px;color:var(--muted);margin-top:18px">Michael Lin</p>
+      <p class="small" style="margin-top:6px">Senior Project Presentation</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Hook</div>
+  <h2>One phrase, many emotional states</h2>
+  <p class="small">The phrase stays fixed; context changes what it means.</p>
+  <div class="hook-stage">
+    <div class="fixed-token">you did it</div>
+    <div class="ctx-row fragment current-visible"><span class="pre">And don’t pretend</span><span></span><span class="post">out of kindness — you wanted the inheritance.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre"></span><span></span><span class="post">! I knew you would. That’s my protégé.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre">Nice aim.</span><span></span><span class="post">.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre"></span><span></span><span class="post">. You found the words for what was inside you.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre">I’ve tried for years, and</span><span></span><span class="post">in months. I’m stunned.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre">With all due respect,</span><span></span><span class="post">in front of everyone. I feel like a scapegoat.</span></div>
+    <div class="ctx-row fragment current-visible"><span class="pre">I can’t believe</span><span></span><span class="post">. You took credit for my work.</span></div>
+    <div class="ctx-caption fragment current-visible">The tokens are identical. The affective interpretation is not.</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Introduction</div>
+  <h2>How does an LLM generate “You did it”?</h2>
+  <p class="small">Next-token prediction is sequential: each new token changes the probability distribution for the next one.</p>
+  <div class="token-stage">
+    <div class="slots">
+      <div class="slot">You</div>
+      <div class="slot fragment" data-fragment-index="2">did</div>
+      <div class="slot fragment" data-fragment-index="4">it</div>
+    </div>
+    <div class="predbox fragment current-visible" data-fragment-index="1">
+      <h3>Top next-token candidates after “You”</h3>
+      <div class="preds"><div><strong>did</strong> .42</div><div>are .16</div><div>can .09</div><div>have .07</div><div>were .05</div><div>know .04</div><div>will .03</div><div>look .03</div><div>should .02</div><div>need .02</div></div>
+    </div>
+    <div class="predbox fragment current-visible" data-fragment-index="3">
+      <h3>Top next-token candidates after “You did”</h3>
+      <div class="preds"><div><strong>it</strong> .51</div><div>not .11</div><div>this .08</div><div>that .07</div><div>everything .04</div><div>well .03</div><div>what .03</div><div>all .02</div><div>something .02</div><div>again .02</div></div>
+    </div>
+    <div class="complete-phrase fragment" data-fragment-index="5">You did it</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Project Idea</div>
+  <h2>Reasoning is not the whole story</h2>
+  <div class="content two leftwide">
+    <div class="stack">
+      <p>Modern model development often prioritizes reasoning, tool use, and task automation.</p>
+      <p>But language also carries affect: tone, interpersonal stance, confidence, tension, trust, and emotional trajectory.</p>
+      <p>Large commercial models often learn these patterns implicitly from massive corpora. Smaller local models have less capacity and need more explicit guidance.</p>
+    </div>
+    <div class="panel soft centerbox">
+      <div>
+        <div class="pill blue">Reasoning</div>
+        <div class="divider"></div>
+        <div class="pill green">Affect</div>
+        <div class="divider"></div>
+        <div class="pill amber">Personality</div>
+        <p class="small" style="margin-top:20px">Co-EmP adds an explicit affective control pathway for low-resource dialogue generation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Project Goal</div>
+  <div class="centerbox">
+    <div>
+      <div class="kicker">Research question</div>
+      <div class="goal">Can we model <span class="emph">emotion dynamics</span> and <span class="emph">personality</span> to improve dialogue generation in low-resource local LLM settings?</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Related Work</div>
+  <h2>Related work I — psychological representations</h2>
+  <div class="content">
+    <table class="tiny-table">
+      <tr><th>Work</th><th>What it contributes</th><th>How it connects to Co-EmP</th></tr>
+      <tr><td><strong>Russell, “A Circumplex Model of Affect”</strong> (1980)</td><td>Organizes emotion along continuous valence and arousal dimensions.</td><td>Provides the core idea that affect can be represented continuously rather than only by categories.</td></tr>
+      <tr><td><strong>Mehrabian, “Pleasure–Arousal–Dominance”</strong> (1996)</td><td>Adds dominance/control as a third affective dimension.</td><td>Motivates the VAD target used by the regressor and GRU module.</td></tr>
+      <tr><td><strong>McCrae & John, “An Introduction to the Five-Factor Model”</strong> (1992)</td><td>Summarizes the Big Five/OCEAN trait framework.</td><td>Gives a compact numeric personality vector for conditioning the emotion transition.</td></tr>
+      <tr><td><strong>Egges et al., “A Multilayer Personality Model”</strong> (2002)</td><td>Connects personality, emotion, and expressive behavior in virtual humans.</td><td>Supports the idea that behavior should be generated through both stable traits and transient affect.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Related Work</div>
+  <h2>Related work II — affective NLP datasets</h2>
+  <div class="content three">
+    <div class="dataset-card">
+      <div class="source">EmoBank</div>
+      <p class="small">10k English sentences with VAD labels; includes reader/writer perspective design.</p>
+      <div class="example">Contribution: gold dimensional labels for training a VAD regressor.</div>
+    </div>
+    <div class="dataset-card">
+      <div class="source">DailyDialog</div>
+      <p class="small">Human-written daily conversations with emotion and dialogue act annotations.</p>
+      <div class="example">Contribution: conversational structure, but labels are categorical, requiring conversion to VAD prototypes.</div>
+    </div>
+    <div class="dataset-card">
+      <div class="source">EmpatheticDialogues</div>
+      <p class="small">25k conversations grounded in emotional situations.</p>
+      <div class="example">Contribution: affect-rich situations useful for empathy-oriented dialogue training.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Related Work</div>
+  <h2>Related work III — emotion-aware generation</h2>
+  <div class="content">
+    <table class="tiny-table">
+      <tr><th>Work</th><th>Relevant idea</th><th>Limitation for this project</th></tr>
+      <tr><td><strong>Rashkin et al., “Towards Empathetic Open-domain Conversation Models”</strong> (2019)</td><td>Shows that models trained on emotion-grounded conversations can be perceived as more empathetic.</td><td>Focuses on empathetic response quality, not explicit recurrent VAD dynamics.</td></tr>
+      <tr><td><strong>He et al., “DeBERTaV3”</strong> (2021)</td><td>Strong encoder architecture using disentangled attention and ELECTRA-style replaced token detection.</td><td>Useful as the VAD regressor backbone, not a complete emotion dynamics model.</td></tr>
+      <tr><td><strong>Ishikawa & Yoshino, “AI with Emotions”</strong> (2025)</td><td>Studies whether LLMs can express specified emotional states using valence/arousal-style control.</td><td>Focuses on expression by large LLMs, not aligning a small local model with a learned dynamics encoder.</td></tr>
+      <tr><td><strong>Amin, “Foundation Models in Affective Computing”</strong> (2025)</td><td>Surveys foundation-model approaches for affective computing tasks.</td><td>Broad survey; Co-EmP is a concrete pipeline with VAD regression, GRU dynamics, and local generation.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Positioning</div>
+  <h2>What Co-EmP tries to organize as one system</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>Existing pieces</h3>
+      <ul>
+        <li>Dimensional emotion theory</li>
+        <li>Personality theory</li>
+        <li>Affective NLP datasets</li>
+        <li>Emotion-aware generation</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Project contribution</h3>
+      <p>Combine these into a dialogue agent whose output is conditioned on:</p>
+      <ul>
+        <li>current context</li>
+        <li>speaker mood</li>
+        <li>personality profile</li>
+        <li>predicted emotion transition</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Methodology</div>
+  <h2>Overall pipeline</h2>
+  <p class="small">The encoder does not replace the LLM. It gives the smaller LLM an explicit affective target.</p>
+  <div class="pipeline">
+    <div class="node"><div class="icon">💬</div><strong>Raw dialogue</strong><small>“I like you.”</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="icon">📐</div><strong>VAD regressor</strong><small>context → mood</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="icon">↻</div><strong>GRU dynamics</strong><small>mood + personality</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="icon">✍️</div><strong>Local LLM</strong><small>emotion-aligned reply</small></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Methodology</div>
+  <h2>What clues should the encoder use?</h2>
+  <div class="content two leftwide">
+    <div class="chat fragment focus-context">
+      <div class="bubble a"><div class="avatar">A</div>I thought you were coming yesterday.</div>
+      <div class="bubble b"><div class="avatar">B</div>I know. I should have told you earlier.</div>
+      <div class="bubble a"><div class="avatar">A</div>You left me waiting for three hours.</div>
+      <div class="bubble pending"><div class="avatar">B typing…</div>...</div>
+    </div>
+    <div class="stack">
+      <div class="panel fragment"><h3>1. Context</h3><p class="small">Previous turns constrain what the next utterance emotionally means.</p></div>
+      <div class="panel fragment"><h3>2. Mood <span class="mood-dot"></span></h3><p class="small">The speaker’s current VAD state shapes the next response.</p></div>
+      <div class="panel fragment">
+        <h3>3. Personality</h3>
+        <div class="person-row"><div class="face">B</div><div class="trait-bars">
+          <div class="bar-row"><span>O</span><div class="track"><div class="fill" style="width:70%"></div></div><span>.70</span></div>
+          <div class="bar-row"><span>C</span><div class="track"><div class="fill green" style="width:35%"></div></div><span>.35</span></div>
+          <div class="bar-row"><span>N</span><div class="track"><div class="fill red" style="width:78%"></div></div><span>.78</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Regressor</div>
+  <h2>Section 1 — Valence, Arousal, Dominance</h2>
+  <p class="small">VAD gives a compact continuous representation of emotional state.</p>
+  <div class="vad-axis">
+    <div class="axis-card"><div class="axis-title blue">Valence</div><p class="small">How pleasant or unpleasant the emotional state is.</p><div class="axis-line"></div><div class="axis-scale"><span>negative</span><span>positive</span></div></div>
+    <div class="axis-card"><div class="axis-title amber">Arousal</div><p class="small">How intense, energetic, or activated the emotional state is.</p><div class="axis-line"></div><div class="axis-scale"><span>calm</span><span>activated</span></div></div>
+    <div class="axis-card"><div class="axis-title">Dominance</div><p class="small">How much control, confidence, or social force the speaker expresses.</p><div class="axis-line"></div><div class="axis-scale"><span>submissive</span><span>in control</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Regressor</div>
+  <h2>DeBERTaV3 as a VAD regressor</h2>
+  <div class="content two rightwide">
+    <div class="panel soft">
+      <h3>Architecture role</h3>
+      <div class="architecture">
+        <div class="archbox"><strong>Text</strong><small>utterance/context</small></div><div class="arrow">→</div>
+        <div class="archbox"><strong>DeBERTaV3</strong><small>contextual encoder</small></div><div class="arrow">→</div>
+        <div class="archbox"><strong>Regression head</strong><small>V, A, D</small></div>
+      </div>
+      <p class="small" style="margin-top:16px">The model maps language into continuous VAD values in [0, 1].</p>
+    </div>
+    <div class="panel">
+      <div class="vad-demo fragment current-visible">
+        <div class="vad-text">“And don’t pretend you did it out of kindness — you wanted the inheritance.”</div>
+        <div class="vad-nums"><div class="bar-row"><span>V</span><div class="track"><div class="fill red" style="width:10%"></div></div><span>-0.8</span></div><div class="bar-row"><span>A</span><div class="track"><div class="fill amber" style="width:90%"></div></div><span>0.9</span></div><div class="bar-row"><span>D</span><div class="track"><div class="fill" style="width:30%"></div></div><span>-0.4</span></div></div>
+      </div>
+      <div class="vad-demo fragment current-visible">
+        <div class="vad-text">“You did it! I knew you would. That’s my protégé.”</div>
+        <div class="vad-nums"><div class="bar-row"><span>V</span><div class="track"><div class="fill green" style="width:100%"></div></div><span>1.0</span></div><div class="bar-row"><span>A</span><div class="track"><div class="fill amber" style="width:90%"></div></div><span>0.9</span></div><div class="bar-row"><span>D</span><div class="track"><div class="fill" style="width:80%"></div></div><span>0.6</span></div></div>
+      </div>
+      <div class="vad-demo fragment current-visible">
+        <div class="vad-text">“I can’t believe you did it. You took full credit for my work.”</div>
+        <div class="vad-nums"><div class="bar-row"><span>V</span><div class="track"><div class="fill red" style="width:15%"></div></div><span>-0.7</span></div><div class="bar-row"><span>A</span><div class="track"><div class="fill amber" style="width:90%"></div></div><span>0.9</span></div><div class="bar-row"><span>D</span><div class="track"><div class="fill" style="width:25%"></div></div><span>-0.5</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Training Data</div>
+  <h2>Dataset choices with concrete examples</h2>
+  <div class="content three">
+    <div class="dataset-card"><div class="source">EmoBank</div><p class="small">Best for gold, continuous VAD labels.</p><div class="example"><strong>Format-style example</strong><br>Sentence: “The verdict left the room silent.”<br>Label: V=.28, A=.52, D=.31</div></div>
+    <div class="dataset-card"><div class="source">DailyDialog</div><p class="small">Best for everyday multi-turn dialogue structure.</p><div class="example"><strong>Format-style example</strong><br>A: “Did you finish the report?”<br>B: “Not yet, but I’m almost done.”<br>Emotion: no_emotion / act: question-answer</div></div>
+    <div class="dataset-card"><div class="source">EmpatheticDialogues</div><p class="small">Best for emotionally grounded situations and replies.</p><div class="example"><strong>Format-style example</strong><br>Emotion: proud<br>Situation: “I passed my driving test after failing twice.”<br>Response: “That must feel amazing.”</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Training Data</div>
+  <h2>Adding EmoDynamic through synthetic labeling</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>Why add synthetic data?</h3>
+      <ol>
+        <li>Dialogue datasets rarely provide continuous VAD labels.</li>
+        <li>Generated dialogues can include persona, VAD, and interaction history.</li>
+        <li>The logic is similar to distillation: a stronger teacher model provides structured supervision to a smaller downstream model.</li>
+      </ol>
+    </div>
+    <div class="dataset-card fragment">
+      <div class="source">EmoDynamic</div>
+      <p class="small">Scenario-grounded, persona-aware dialogue with per-turn VAD.</p>
+      <div class="example"><strong>Example turn</strong><br>A: “Alright, I’m watching. Nice aim! You did it.”<br>VAD: V=.60, A=.40, D=.80</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Data Synthesis</div>
+  <h2>Data synthesis: from scenario to dialogue</h2>
+  <div class="content synth-grid">
+    <div class="mini-json fragment"><strong>1. Start scenario</strong><br><br>title: Building a Treehouse Together<br><br>parent: methodical, safety-conscious, mildly anxious<br>initial VAD: {.2, .5, .9}<br><br>child: enthusiastic, clumsy, risk-taking<br>initial VAD: {.8, .9, .2}</div>
+    <div class="mini-json fragment"><strong>2. Personality augmentation</strong><br><br>Variant A: encouraging instructor<br>parent O=.6 C=.8 A=.9<br><br>Variant B: playful mentor<br>parent E=.6 A=.8 N=.3<br><br>Variant C: architect parent<br>style: calm, encouraging</div>
+    <div class="dialogue-mini fragment">
+      <div class="line"><span class="tag">A</span> Let’s measure one more time. Safety first. <span class="muted">V=.2 A=.5 D=.9</span></div>
+      <div class="line"><span class="tag">B</span> I want to saw it myself! <span class="muted">V=.8 A=.9 D=.2</span></div>
+      <div class="line"><span class="tag">A</span> Let me handle the saw. You can hand me the nails. <span class="muted">V=.2 A=.6 D=.9</span></div>
+      <div class="line"><span class="tag">A</span> Nice aim! You did it. <span class="muted">V=.6 A=.4 D=.8</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Training</div>
+  <h2>Dataset weighting</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>Reasoning</h3>
+      <p>Different sources have different reliability for VAD supervision.</p>
+      <ul>
+        <li><strong>Gold VAD</strong>: direct supervision</li>
+        <li><strong>Synthetic VAD</strong>: useful but teacher-generated</li>
+        <li><strong>Categorical-to-VAD</strong>: approximate mapping</li>
+      </ul>
+    </div>
+    <pre class="code tight">def source_weight(example):
+    label_source = str(example.get("label_source", "")).lower()
+    source = str(example.get("source", "")).lower()
+
+    if "gold_vad" in label_source or "emobank" in source:
+        return 1.0
+
+    if "synthetic" in label_source or "custom" in source:
+        return 0.4
+
+    if "categorical_to_vad" in label_source:
+        return 0.15
+
+    return 0.2</pre>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">VAD Results</div>
+  <h2>VAD regressor: compact evaluation view</h2>
+  <div class="content two">
+    <div class="panel">
+      <h3>Overall test split</h3>
+      <div class="three" style="margin-top:12px">
+        <div class="metric-card"><div class="num">0.141</div><div class="cap">RMSE</div></div>
+        <div class="metric-card"><div class="num">0.091</div><div class="cap">MAE</div></div>
+        <div class="metric-card"><div class="num">0.483</div><div class="cap">Mean R²</div></div>
+      </div>
+      <div class="divider"></div>
+      <p class="small no-bottom">Training: epochs=4, train batch=8, eval batch=16, learning rate=1e-5.</p>
+    </div>
+    <div class="panel">
+      <h3>Correlations by VAD dimension</h3>
+      <div class="bars" style="margin-top:12px">
+        <div class="bar-row"><span>Valence ρ</span><div class="track"><div class="fill" style="width:66%"></div></div><span>.66</span></div>
+        <div class="bar-row"><span>Valence r</span><div class="track"><div class="fill" style="width:70%"></div></div><span>.70</span></div>
+        <div class="bar-row"><span>Arousal ρ</span><div class="track"><div class="fill amber" style="width:78%"></div></div><span>.78</span></div>
+        <div class="bar-row"><span>Arousal r</span><div class="track"><div class="fill amber" style="width:76%"></div></div><span>.76</span></div>
+        <div class="bar-row"><span>Dominance ρ</span><div class="track"><div class="fill green" style="width:56%"></div></div><span>.56</span></div>
+        <div class="bar-row"><span>Dominance r</span><div class="track"><div class="fill green" style="width:65%"></div></div><span>.65</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">GRU Encoder</div>
+  <h2>Section 2 — why a recurrent model?</h2>
+  <div class="content two">
+    <div class="stack">
+      <p>A dialogue’s emotional state is not reset every turn.</p>
+      <p>The next emotional state depends on the previous state, the other speaker’s current utterance, and the responding speaker’s personality.</p>
+      <div class="note">A GRU is useful because it maintains a hidden state that is updated step-by-step across a sequence.</div>
+    </div>
+    <div class="gru-cell">
+      <div class="gate g1">reset gate</div><div class="gate g2">update gate</div><div class="gate g3">candidate state</div>
+      <div class="flow"></div><div class="pill hprev">h<sub>t-1</sub></div><div class="pill hnext blue">h<sub>t</sub></div><div class="inputx">x<sub>t</sub> enters the cell</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">GRU Encoder</div>
+  <h2>GRU design</h2>
+  <div class="content two rightwide">
+    <div class="formula">
+z_A(t) = GRU(x(t), z_A(t−1))
+
+x(t) = [ v_A(t−1), v_B(t),
+         v_B(t) − v_A(t−1), p_A ]
+
+v_A(t) = MLP(z_A(t))
+    </div>
+    <div class="panel soft defs">
+      <div><span class="var">z_A(t)</span> emotional state embedding for speaker A</div>
+      <div><span class="var">v_A(t−1)</span> A’s previous predicted VAD</div>
+      <div><span class="var">v_B(t)</span> B’s current VAD from the regressor</div>
+      <div><span class="var">v_B(t) − v_A(t−1)</span> affective difference signal</div>
+      <div><span class="var">p_A</span> Big Five / OCEAN personality vector</div>
+      <div><span class="var">v_A(t)</span> target VAD for A’s next utterance</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">GRU Encoder</div>
+  <h2>Where each variable comes from</h2>
+  <div class="content">
+    <div class="time-diagram">
+      <div class="timeline"></div><div class="tick tminus">t−1</div><div class="tick t">t</div>
+      <div class="srcbox src1 fragment">A previous state<br><span class="var">v_A(t−1)</span></div>
+      <div class="srcbox src2 fragment">B current utterance<br><span class="var">v_B(t)</span></div>
+      <div class="srcbox src3 fragment">difference signal<br><span class="var">v_B(t)−v_A(t−1)</span></div>
+      <div class="srcbox src4 fragment">A personality<br><span class="var">p_A</span></div>
+      <div class="srcbox target fragment">GRU predicts<br><span class="var">v_A(t)</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">GRU Training</div>
+  <h2>Training the GRU dynamics module</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>Training data</h3>
+      <p>EmoDynamic is the main source because it contains:</p>
+      <ul>
+        <li>speaker identities</li>
+        <li>personality vectors</li>
+        <li>turn-by-turn VAD labels</li>
+        <li>multi-turn emotional transitions</li>
+      </ul>
+    </div>
+    <pre class="code light">--epochs 40
+--batch_size 16
+--lr 2e-4
+--z_dim 64
+--grad_clip 1.0
+--vad_norm 0_1</pre>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">LLM Generator</div>
+  <h2>Section 3 — guiding a local LLM</h2>
+  <div class="content prompt-grid">
+    <div class="panel soft prompt-points">
+      <h3>Important prompt controls</h3>
+      <ul>
+        <li>Expose target affect as an interpretation guide, not as text to repeat.</li>
+        <li>Use few-shot examples to map VAD regions into natural speaking styles.</li>
+        <li>Keep strict output rules: one reply, no labels, no analysis, no VAD terms.</li>
+        <li>Condition on public scenario, speaker personality, and private speaker context.</li>
+      </ul>
+    </div>
+    <pre class="code tight">Affect guidance:
+- Low valence: hurt, angry, bitter, afraid
+- High arousal: tense, urgent, defensive
+- Low dominance: hesitant, apologetic, uncertain
+- High dominance: firm, decisive, confrontational
+
+Few-shot anchors:
+(0.15, 0.20, 0.20)
+"I... I don’t know what you want me to say."
+
+(0.15, 0.85, 0.80)
+"No. Don’t twist this around on me."
+
+Generation rule:
+Write only the next spoken reply.</pre>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">LLM Generator</div>
+  <h2>Prompt rules: compact form</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>System role</h3>
+      <p>You are <span class="var">speaker_name</span> in a two-person dialogue simulation.</p>
+      <p>Stay consistent with personality, private context, and shared scenario.</p>
+      <p>Use affect guidance internally, but do not mention VAD or numeric values.</p>
+    </div>
+    <pre class="code tight">Rules:
+- Output only the spoken reply.
+- Do not output analysis, labels, JSON,
+  stage directions, or candidates.
+- Do not write the other speaker’s line.
+- Do not say "valence", "arousal",
+  "dominance", or "VAD".
+- Avoid long speeches.
+- Reveal private context only if the
+  character would naturally say it.</pre>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Final Product</div>
+  <h2>Section 4 — Gradio demo interface</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>Why Gradio?</h3>
+      <p>Gradio provides a fast way to expose machine learning models through an interactive web interface.</p>
+      <p>For this project, it makes the model behavior visible through live conversation, comparison modes, and VAD traces.</p>
+    </div>
+    <div class="browser">
+      <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="demo-body"><div class="demo-pane"><h3>Baseline</h3><div class="bubble a">I can’t believe you did that.</div><div class="bubble b">I understand. Let’s talk.</div></div><div class="demo-pane"><h3>Emotion-supported</h3><div class="bubble a">I can’t believe you did that.</div><div class="bubble b">No, I know I hurt you. I’m not going to pretend this is small.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Final Product</div>
+  <h2>Demo modes</h2>
+  <div class="content mode-grid">
+    <div class="mode"><div class="num">Mode 1</div><h3>Pure baseline</h3><p class="small">No emotion guidance; local LLM only.</p></div>
+    <div class="mode"><div class="num">Mode 2</div><h3>Emotion-supported</h3><p class="small">VAD regressor + GRU target guides generation.</p></div>
+    <div class="mode"><div class="num">Mode 3</div><h3>Arena comparison</h3><p class="small">Baseline and emotion-supported outputs shown side-by-side.</p></div>
+    <div class="mode"><div class="num">Mode 4</div><h3>Two-AI simulation</h3><p class="small">Both speakers are model-driven, with separate contexts and states.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Conclusion</div>
+  <h2>Conclusion</h2>
+  <div class="content two">
+    <div class="panel soft">
+      <h3>What was built</h3>
+      <ul>
+        <li>VAD regressor for affect state estimation</li>
+        <li>GRU encoder for emotion dynamics</li>
+        <li>LLM prompting layer for target affect control</li>
+        <li>Gradio demo with comparison modes</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Main claim</h3>
+      <p>Small local LLMs can be made more emotionally consistent when affect and personality are represented explicitly rather than left entirely implicit inside the model.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Limitations</div>
+  <h2>Current limitations and next steps</h2>
+  <div class="content stack">
+    <div class="limitation"><div class="lim-num">1</div><div><h3>Semantic appraisal is still weak</h3><p>At present, the GRU encoder mainly processes VAD history and personality. It may fail to capture semantic events that strongly change emotion, such as betrayal, accusation, apology, or sudden loss. This can be improved by adding an appraisal vector for goal relevance, norm violation, agency, controllability, and relationship impact.</p></div></div>
+    <div class="limitation"><div class="lim-num">2</div><div><h3>More calibration is needed</h3><p>The VAD regressor and GRU encoder both predict VAD, but from different signals and distributions. Their outputs need stronger alignment. A second alignment is also needed between the LLM’s practical interpretation of VAD and the GRU’s target VAD. RLHF or DPO could be used for this calibration.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">References</div>
+  <h2>Selected references</h2>
+  <div class="content">
+    <table class="tiny-table ref-table">
+      <tr><td>[1]</td><td><span class="title">Russell, “A Circumplex Model of Affect.”</span> Journal of Personality and Social Psychology, 1980.</td></tr>
+      <tr><td>[2]</td><td><span class="title">Mehrabian, “Pleasure-arousal-dominance: A general framework for describing and measuring individual differences in temperament.”</span> Current Psychology, 1996.</td></tr>
+      <tr><td>[3]</td><td><span class="title">McCrae & John, “An Introduction to the Five-Factor Model and Its Applications.”</span> Journal of Personality, 1992.</td></tr>
+      <tr><td>[4]</td><td><span class="title">Egges, Kshirsagar & Magnenat-Thalmann, “A Multilayer Personality Model.”</span> 2002.</td></tr>
+      <tr><td>[5]</td><td><span class="title">Buechel & Hahn, “EmoBank: Studying the Impact of Annotation Perspective and Representation Format.”</span> EACL, 2017.</td></tr>
+      <tr><td>[6]</td><td><span class="title">Li et al., “DailyDialog: A Manually Labelled Multi-turn Dialogue Dataset.”</span> 2017.</td></tr>
+      <tr><td>[7]</td><td><span class="title">Rashkin et al., “Towards Empathetic Open-domain Conversation Models.”</span> ACL, 2019.</td></tr>
+      <tr><td>[8]</td><td><span class="title">He, Gao & Chen, “DeBERTaV3: Improving DeBERTa using ELECTRA-Style Pre-Training.”</span> 2021.</td></tr>
+      <tr><td>[9]</td><td><span class="title">Ishikawa & Yoshino, “AI with Emotions: Exploring Emotional Expressions in Large Language Models.”</span> NLP4DH, 2025.</td></tr>
+      <tr><td>[10]</td><td><span class="title">Amin, “Foundation Models in Affective Computing.”</span> 2025.</td></tr>
+    </table>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash:true,
+    width:1280,
+    height:720,
+    margin:0.04,
+    controls:true,
+    progress:false,
+    center:false,
+    transition:'fade',
+    backgroundTransition:'fade',
+    slideNumber:false,
+    fragments:true
+  });
+</script>
+</body>
+</html>

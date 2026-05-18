@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+.dist-info/
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dylib
+
+# Distribution / packaging
+build/
+dist/
+*.egg
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+logs/
+*.log
+outputs/
+emotion_gru_runs/
+
+# Data / datasets / models (ignore large files)
+data/
+DailyDialogue/
+deberta_dailydialog/
+EmoBank/
+emobank_only_vad_dataset/
+emotion_gru_runs\run1/
+essay/
+eval_emobank_only/
+integrated_vad_utterance_dataset/
+Journal/
+outputs/
+roberta_dailydialog/
+vad_deberta_v3_emobank_only/
+vad_deberta_v3_regressor/
+vad_source_eval_test/
+vad_source_eval_train/
+*dataset*/
+*.pt
+*.ckpt
+*.pth
+~$MichaelLin_presentation.pptx
+
+# Temporary files
+tmp*
+*.tmp
+
+# Secrets
+.env
+
+# Windows
+*.bat
+
+# Keep local config
+config/local_settings.py

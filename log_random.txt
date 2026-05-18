@@ -1,0 +1,298 @@
+qwen3_dailydialog_emotion_predictions
+Finished.
+Evaluated instances: 946
+Valid predictions:   946
+Unparsable outputs:  0
+Saved outputs to:    C:\Users\Michael Lin\projects\SeniorProject\qwen3_dailydialog_emotion_predictions.jsonl
+
+Accuracy:    0.5243
+Macro-F1:    0.2966
+Weighted-F1: 0.5560
+
+Classification report:
+              precision    recall  f1-score   support
+
+  no emotion     0.7833    0.4672    0.5853       503
+       anger     0.3012    0.4717    0.3676        53
+     disgust     0.0435    0.1250    0.0645         8
+        fear     0.0459    0.6250    0.0855         8
+   happiness     0.6106    0.7078    0.6556       308
+     sadness     0.2200    0.4074    0.2857        27
+    surprise     0.0417    0.0256    0.0317        39
+
+    accuracy                         0.5243       946
+   macro avg     0.2923    0.4042    0.2966       946
+weighted avg     0.6410    0.5243    0.5560       946
+
+
+Confusion matrix:
+[[235  30  16  70 117  19  16]
+ [  7  25   0   3   7   9   2]
+ [  2   3   1   1   0   1   0]
+ [  0   0   0   5   2   1   0]
+ [ 50  16   5  12 218   5   2]
+ [  2   1   0   7   3  11   3]
+ [  4   8   1  11  10   4   1]]
+
+
+qwen3_dailydialog_emotion_predictions2
+Finished.
+Evaluated instances: 946
+Valid predictions:   946
+Unparsable outputs:  0
+Saved outputs to:    C:\Users\Michael Lin\projects\SeniorProject\qwen3_dailydialog_emotion_predictions2.jsonl
+
+Accuracy:    0.5243
+Macro-F1:    0.2966
+Weighted-F1: 0.5560
+
+Classification report:
+              precision    recall  f1-score   support
+
+  no emotion     0.7833    0.4672    0.5853       503
+       anger     0.3012    0.4717    0.3676        53
+     disgust     0.0435    0.1250    0.0645         8
+        fear     0.0459    0.6250    0.0855         8
+   happiness     0.6106    0.7078    0.6556       308
+     sadness     0.2200    0.4074    0.2857        27
+    surprise     0.0417    0.0256    0.0317        39
+
+    accuracy                         0.5243       946
+   macro avg     0.2923    0.4042    0.2966       946
+weighted avg     0.6410    0.5243    0.5560       946
+
+
+Confusion matrix:
+[[235  30  16  70 117  19  16]
+ [  7  25   0   3   7   9   2]
+ [  2   3   1   1   0   1   0]
+ [  0   0   0   5   2   1   0]
+ [ 50  16   5  12 218   5   2]
+ [  2   1   0   7   3  11   3]
+ [  4   8   1  11  10   4   1]]
+
+
+
+roberta_dailydialog
+There were missing keys in the checkpoint model loaded: ['roberta.embeddings.LayerNorm.weight', 'roberta.embeddings.LayerNorm.bias', 'roberta.encoder.layer.0.attention.output.LayerNorm.weight', 'roberta.encoder.layer.0.attention.output.LayerNorm.bias', 'roberta.encoder.layer.0.output.LayerNorm.weight', 'roberta.encoder.layer.0.output.LayerNorm.bias', 'roberta.encoder.layer.1.attention.output.LayerNorm.weight', 'roberta.encoder.layer.1.attention.output.LayerNorm.bias', 'roberta.encoder.layer.1.output.LayerNorm.weight', 'roberta.encoder.layer.1.output.LayerNorm.bias', 'roberta.encoder.layer.2.attention.output.LayerNorm.weight', 'roberta.encoder.layer.2.attention.output.LayerNorm.bias', 'roberta.encoder.layer.2.output.LayerNorm.weight', 'roberta.encoder.layer.2.output.LayerNorm.bias', 'roberta.encoder.layer.3.attention.output.LayerNorm.weight', 'roberta.encoder.layer.3.attention.output.LayerNorm.bias', 'roberta.encoder.layer.3.output.LayerNorm.weight', 'roberta.encoder.layer.3.output.LayerNorm.bias', 'roberta.encoder.layer.4.attention.output.LayerNorm.weight', 'roberta.encoder.layer.4.attention.output.LayerNorm.bias', 'roberta.encoder.layer.4.output.LayerNorm.weight', 'roberta.encoder.layer.4.output.LayerNorm.bias', 'roberta.encoder.layer.5.attention.output.LayerNorm.weight', 'roberta.encoder.layer.5.attention.output.LayerNorm.bias', 'roberta.encoder.layer.5.output.LayerNorm.weight', 'roberta.encoder.layer.5.output.LayerNorm.bias', 'roberta.encoder.layer.6.attention.output.LayerNorm.weight', 'roberta.encoder.layer.6.attention.output.LayerNorm.bias', 'roberta.encoder.layer.6.output.LayerNorm.weight', 'roberta.encoder.layer.6.output.LayerNorm.bias', 'roberta.encoder.layer.7.attention.output.LayerNorm.weight', 'roberta.encoder.layer.7.attention.output.LayerNorm.bias', 'roberta.encoder.layer.7.output.LayerNorm.weight', 'roberta.encoder.layer.7.output.LayerNorm.bias', 'roberta.encoder.layer.8.attention.output.LayerNorm.weight', 'roberta.encoder.layer.8.attention.output.LayerNorm.bias', 'roberta.encoder.layer.8.output.LayerNorm.weight', 'roberta.encoder.layer.8.output.LayerNorm.bias', 'roberta.encoder.layer.9.attention.output.LayerNorm.weight', 'roberta.encoder.layer.9.attention.output.LayerNorm.bias', 'roberta.encoder.layer.9.output.LayerNorm.weight', 'roberta.encoder.layer.9.output.LayerNorm.bias', 'roberta.encoder.layer.10.attention.output.LayerNorm.weight', 'roberta.encoder.layer.10.attention.output.LayerNorm.bias', 'roberta.encoder.layer.10.output.LayerNorm.weight', 'roberta.encoder.layer.10.output.LayerNorm.bias', 'roberta.encoder.layer.11.attention.output.LayerNorm.weight', 'roberta.encoder.layer.11.attention.output.LayerNorm.bias', 'roberta.encoder.layer.11.output.LayerNorm.weight', 'roberta.encoder.layer.11.output.LayerNorm.bias'].
+{'train_runtime': '524', 'train_samples_per_second': '59.78', 'train_steps_per_second': '14.95', 'train_loss': '0.7002', 'epoch': '3'}
+There were unexpected keys in the checkpoint model loaded: ['roberta.embeddings.LayerNorm.beta', 'roberta.embeddings.LayerNorm.gamma', 'roberta.encoder.layer.0.attention.output.LayerNorm.beta', 'roberta.encoder.layer.0.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.0.output.LayerNorm.beta', 'roberta.encoder.layer.0.output.LayerNorm.gamma', 'roberta.encoder.layer.1.attention.output.LayerNorm.beta', 'roberta.encoder.layer.1.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.1.output.LayerNorm.beta', 'roberta.encoder.layer.1.output.LayerNorm.gamma', 'roberta.encoder.layer.2.attention.output.LayerNorm.beta', 'roberta.encoder.layer.2.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.2.output.LayerNorm.beta', 'roberta.encoder.layer.2.output.LayerNorm.gamma', 'roberta.encoder.layer.3.attention.output.LayerNorm.beta', 'roberta.encoder.layer.3.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.3.output.LayerNorm.beta', 'roberta.encoder.layer.3.output.LayerNorm.gamma', 'roberta.encoder.layer.4.attention.output.LayerNorm.beta', 'roberta.encoder.layer.4.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.4.output.LayerNorm.beta', 'roberta.encoder.layer.4.output.LayerNorm.gamma', 'roberta.encoder.layer.5.attention.output.LayerNorm.beta', 'roberta.encoder.layer.5.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.5.output.LayerNorm.beta', 'roberta.encoder.layer.5.output.LayerNorm.gamma', 'roberta.encoder.layer.6.attention.output.LayerNorm.beta', 'roberta.encoder.layer.6.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.6.output.LayerNorm.beta', 'roberta.encoder.layer.6.output.LayerNorm.gamma', 'roberta.encoder.layer.7.attention.output.LayerNorm.beta', 'roberta.encoder.layer.7.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.7.output.LayerNorm.beta', 'roberta.encoder.layer.7.output.LayerNorm.gamma', 'roberta.encoder.layer.8.attention.output.LayerNorm.beta', 'roberta.encoder.layer.8.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.8.output.LayerNorm.beta', 'roberta.encoder.layer.8.output.LayerNorm.gamma', 'roberta.encoder.layer.9.attention.output.LayerNorm.beta', 'roberta.encoder.layer.9.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.9.output.LayerNorm.beta', 'roberta.encoder.layer.9.output.LayerNorm.gamma', 'roberta.encoder.layer.10.attention.output.LayerNorm.beta', 'roberta.encoder.layer.10.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.10.output.LayerNorm.beta', 'roberta.encoder.layer.10.output.LayerNorm.gamma', 'roberta.encoder.layer.11.attention.output.LayerNorm.beta', 'roberta.encoder.layer.11.attention.output.LayerNorm.gamma', 'roberta.encoder.layer.11.output.LayerNorm.beta', 'roberta.encoder.layer.11.output.LayerNorm.gamma'].
+
+Validation evaluation...
+{'eval_loss': '0.7826', 'eval_accuracy': '0.8265', 'eval_macro_f1': '0.498', 'eval_weighted_f1': '0.8246', 'eval_runtime': '5.071', 'eval_samples_per_second': '172.8', 'eval_steps_per_second': '21.69', 'epoch': '3'}
+{'eval_loss': 0.7825856804847717, 'eval_accuracy': 0.8264840182648402, 'eval_macro_f1': 0.4979872984683727, 'eval_weighted_f1': 0.8246461560881796, 'eval_runtime': 5.0706, 'eval_samples_per_second': 172.759, 'eval_steps_per_second': 21.693, 'epoch': 3.0}
+
+Test evaluation...
+{'eval_loss': '1.208', 'eval_accuracy': '0.7548', 'eval_macro_f1': '0.4432', 'eval_weighted_f1': '0.7462', 'eval_runtime': '7.219', 'eval_samples_per_second': '131', 'eval_steps_per_second': '16.48', 'epoch': '3'}
+{'eval_loss': 1.2078449726104736, 'eval_accuracy': 0.7547568710359408, 'eval_macro_f1': 0.4432223105730206, 'eval_weighted_f1': 0.7461832580751002, 'eval_runtime': 7.2192, 'eval_samples_per_second': 131.039, 'eval_steps_per_second': 16.484, 'epoch': 3.0}
+
+Generating detailed test report...
+
+Classification report:
+              precision    recall  f1-score   support
+
+  no emotion     0.7889    0.8171    0.8027       503
+       anger     0.6000    0.4528    0.5161        53
+     disgust     0.3333    0.1250    0.1818         8
+        fear     0.0000    0.0000    0.0000         8
+   happiness     0.7788    0.8117    0.7949       308
+     sadness     0.2857    0.2222    0.2500        27
+    surprise     0.5500    0.5641    0.5570        39
+
+    accuracy                         0.7548       946
+   macro avg     0.4767    0.4276    0.4432       946
+weighted avg     0.7403    0.7548    0.7462       946
+
+
+Confusion matrix:
+[[411  11   1   0  60  12   8]
+ [ 22  24   1   0   1   1   4]
+ [  5   0   1   0   1   0   1]
+ [  5   0   0   0   1   0   2]
+ [ 55   0   0   0 250   0   3]
+ [ 13   5   0   0   3   6   0]
+ [ 10   0   0   0   5   2  22]]
+
+
+
+ {'eval_loss': '1.706', 'eval_accuracy': '0.7452', 'eval_macro_f1': '0.5097', 'eval_weighted_f1': '0.7406', 'eval_runtime': '7.255', 'eval_samples_per_second': '130.4', 'eval_steps_per_second': '16.4', 'epoch': '6'}
+{'eval_loss': 1.7064443826675415, 'eval_accuracy': 0.7452431289640592, 'eval_macro_f1': 0.5097055189330982, 'eval_weighted_f1': 0.740620885843094, 'eval_runtime': 7.2552, 'eval_samples_per_second': 130.389, 'eval_steps_per_second': 16.402, 'epoch': 6.0}
+
+Generating detailed test report...
+
+Classification report:
+              precision    recall  f1-score   support
+
+  no emotion     0.7822    0.8211    0.8012       503
+       anger     0.6579    0.4717    0.5495        53
+     disgust     0.3000    0.3750    0.3333         8
+        fear     0.5000    0.2500    0.3333         8
+   happiness     0.7680    0.7630    0.7655       308
+     sadness     0.3333    0.2222    0.2667        27
+    surprise     0.5000    0.5385    0.5185        39
+
+    accuracy                         0.7452       946
+   macro avg     0.5488    0.4916    0.5097       946
+weighted avg     0.7397    0.7452    0.7406       946
+
+
+Confusion matrix:
+[[413  10   5   1  56   9   9]
+ [ 17  25   2   0   4   1   4]
+ [  3   0   3   1   0   0   1]
+ [  1   0   0   2   2   1   2]
+ [ 69   0   0   0 235   0   4]
+ [ 15   3   0   0   2   6   1]
+ [ 10   0   0   0   7   1  21]]
+
+
+You are now role playing a real-life figure with real emotion dynamic. You should output only the responses of the role you are playing. Your language style should mimic that of the person you are playing. Colloquial language is encouraged as it assimilates conversation. NO thinking. NO analysis. NO signposting
+
+personality: Egotistical, proud, fragile beneath surface
+Context: Financial struggle, speaking to child
+Mood: Defensive →
+
+John: School sent the check. I need more money for tuition.
+You:
+
+Oh, don't get the wrong idea, kid. I'm not asking for charity; I'm just... managing the books. The school sent the check, sure, but the tuition is a lot. It's a lot. You think I don't know how to handle it? I've got it. I've got it. Just... maybe if you stopped asking so many questions, I wouldn't have to stress about it. It's just... it's just a lot of numbers, okay? A lot.
+
+I'm not... I'm not suggesting this! It's just... ah... all the other kids had their tuition se...
+
+Hush! Stop that, stop that! You think I don't know what's happening? You think I don't see the way they're looking at you, the way the other parents are whispering? I'm the one who's got the dignity, the one who's not begging for scraps like the rest of them. But don't you dare look at me like I'm weak. I'm just... I'm just being smart. Being careful. If I can't pay it all right now, well, maybe we'll just have to wait a little longer. But don't you ever think I'm giving up. I'm just... I'm just holding on until I can make it work. Just don't make me look bad, okay?
+
+I'm sick of this! Every time you said you'll make it work. Every single time! You never! ever! get the household right.
+
+You have no idea what you're talking! You think this is easy? You think I just sit here and wait for the bills to disappear? I'm working! I'm trying! But you're just a kid, you don't understand the pressure. You don't know how hard it is to keep your head up when the bank account is empty. Don't you dare tell me I'm failing. I'm the one who's supposed to be the provider. If I can't get it right this time, well, maybe I'll just have to cut back on your allowance. Maybe I'll have to make you do chores. But don't you ever think I'm giving up on us. I'm just... I'm just being realistic. Just don't make me look weak, okay?
+
+No... Of course we understand. Sorry for getting too excited. its just... maybe you should talk through with us sometimes. Mom's there. I'm here, and you can talk to us when you felt necessary
+
+You think I need your permission? Do you know how much I've been carrying? You think I don't feel the weight of it? I don't need you to "talk through" it like we're having a meeting. I'm the one who's got the answers. I'm the one who's got the plan. You just sit back and listen. And don't you dare mention Mom. She's not part of this. She's not the one who's supposed to be strong. I am. I'm the one who's got the future. Just... just shut up and let me handle it. I'm not asking for help. I'm just... I'm just being responsible.
+
+
+
+deberta vad regressor
+full dataset
+1 0.7 0.35
+
+{
+  "validation": {
+    "eval_loss": 0.007968485355377197,
+    "eval_mse": 0.00796735379844904,
+    "eval_rmse": 0.08926003472130761,
+    "eval_mae": 0.04566912725567818,
+    "eval_valence_mse": 0.007600876037031412,
+    "eval_valence_rmse": 0.08718300314299464,
+    "eval_valence_mae": 0.049700938165187836,
+    "eval_valence_r2": 0.3531673550605774,
+    "eval_arousal_mse": 0.013408775441348553,
+    "eval_arousal_rmse": 0.11579626695774158,
+    "eval_arousal_mae": 0.05638507008552551,
+    "eval_arousal_r2": 0.5221041440963745,
+    "eval_dominance_mse": 0.002892423653975129,
+    "eval_dominance_rmse": 0.05378125745996582,
+    "eval_dominance_mae": 0.03092138096690178,
+    "eval_dominance_r2": 0.2725834250450134,
+    "eval_runtime": 14.6757,
+    "eval_samples_per_second": 617.891,
+    "eval_steps_per_second": 38.635,
+    "epoch": 3.0
+  },
+  "test": {
+    "test_loss": 0.012110373936593533,
+    "test_mse": 0.012119054794311523,
+    "test_rmse": 0.1100865786293294,
+    "test_mae": 0.058722928166389465,
+    "test_valence_mse": 0.011293829418718815,
+    "test_valence_rmse": 0.10627243019108397,
+    "test_valence_mae": 0.0626295804977417,
+    "test_valence_r2": 0.36845046281814575,
+    "test_arousal_mse": 0.021049903705716133,
+    "test_arousal_rmse": 0.14508584943307232,
+    "test_arousal_mae": 0.07558745890855789,
+    "test_arousal_r2": 0.40435338020324707,
+    "test_dominance_mse": 0.004013467114418745,
+    "test_dominance_rmse": 0.06335193062897725,
+    "test_dominance_mae": 0.03795193135738373,
+    "test_dominance_r2": 0.30159878730773926,
+    "test_runtime": 14.4082,
+    "test_samples_per_second": 606.599,
+    "test_steps_per_second": 37.964,
+    "epoch": 3.0
+  }
+} 
+
+
+GRU train
+
+Loaded data:
+  raw dialogues:     4225
+  train dialogues:   3591
+  val dialogues:     634
+  train sequences:   6033
+  val sequences:     1051
+  chunk_len:         None
+  include_first_turn:True
+  device:            cuda
+Epoch 001 | train_mse=0.02447 | train_rmse=0.14912 | train_mae=0.12297 | train_valence_r2=0.52796 | train_arousal_r2=0.04551 | train_dominance_r2=0.52475 | val_mse=0.00927 | val_rmse=0.09551 | val_mae=0.07613 | val_valence_r2=0.81064 | val_arousal_r2=0.57862 | val_dominance_r2=0.83049
+  saved new best: val_mse=0.009274
+Epoch 002 | train_mse=0.00840 | train_rmse=0.09107 | train_mae=0.07213 | train_valence_r2=0.83773 | train_arousal_r2=0.64239 | train_dominance_r2=0.84797 | val_mse=0.00671 | val_rmse=0.08102 | val_mae=0.06338 | val_valence_r2=0.86426 | val_arousal_r2=0.69243 | val_dominance_r2=0.87703
+  saved new best: val_mse=0.006714
+Epoch 003 | train_mse=0.00692 | train_rmse=0.08264 | train_mae=0.06454 | train_valence_r2=0.86265 | train_arousal_r2=0.72052 | train_dominance_r2=0.87345 | val_mse=0.00596 | val_rmse=0.07625 | val_mae=0.05861 | val_valence_r2=0.87336 | val_arousal_r2=0.75696 | val_dominance_r2=0.88706
+  saved new best: val_mse=0.005960
+Epoch 004 | train_mse=0.00629 | train_rmse=0.07880 | train_mae=0.06069 | train_valence_r2=0.87174 | train_arousal_r2=0.76424 | train_dominance_r2=0.88209 | val_mse=0.00577 | val_rmse=0.07496 | val_mae=0.05692 | val_valence_r2=0.87598 | val_arousal_r2=0.77960 | val_dominance_r2=0.88748
+  saved new best: val_mse=0.005766
+Epoch 005 | train_mse=0.00594 | train_rmse=0.07655 | train_mae=0.05852 | train_valence_r2=0.87779 | train_arousal_r2=0.78154 | train_dominance_r2=0.88862 | val_mse=0.00541 | val_rmse=0.07251 | val_mae=0.05405 | val_valence_r2=0.88431 | val_arousal_r2=0.79834 | val_dominance_r2=0.89213
+  saved new best: val_mse=0.005406
+Epoch 006 | train_mse=0.00570 | train_rmse=0.07499 | train_mae=0.05694 | train_valence_r2=0.88308 | train_arousal_r2=0.79255 | train_dominance_r2=0.89123 | val_mse=0.00527 | val_rmse=0.07163 | val_mae=0.05322 | val_valence_r2=0.88438 | val_arousal_r2=0.80808 | val_dominance_r2=0.89609
+  saved new best: val_mse=0.005275
+Epoch 007 | train_mse=0.00559 | train_rmse=0.07422 | train_mae=0.05598 | train_valence_r2=0.88598 | train_arousal_r2=0.79892 | train_dominance_r2=0.89261 | val_mse=0.00507 | val_rmse=0.07016 | val_mae=0.05139 | val_valence_r2=0.89111 | val_arousal_r2=0.81271 | val_dominance_r2=0.89854
+  saved new best: val_mse=0.005073
+Epoch 008 | train_mse=0.00547 | train_rmse=0.07345 | train_mae=0.05516 | train_valence_r2=0.88722 | train_arousal_r2=0.80512 | train_dominance_r2=0.89518 | val_mse=0.00506 | val_rmse=0.07011 | val_mae=0.05139 | val_valence_r2=0.89031 | val_arousal_r2=0.81116 | val_dominance_r2=0.90042
+  saved new best: val_mse=0.005063
+Epoch 009 | train_mse=0.00539 | train_rmse=0.07283 | train_mae=0.05477 | train_valence_r2=0.88874 | train_arousal_r2=0.80721 | train_dominance_r2=0.89698 | val_mse=0.00498 | val_rmse=0.06952 | val_mae=0.05029 | val_valence_r2=0.89279 | val_arousal_r2=0.81628 | val_dominance_r2=0.90044
+  saved new best: val_mse=0.004983
+Epoch 010 | train_mse=0.00533 | train_rmse=0.07248 | train_mae=0.05408 | train_valence_r2=0.89020 | train_arousal_r2=0.80843 | train_dominance_r2=0.89793 | val_mse=0.00501 | val_rmse=0.06973 | val_mae=0.05074 | val_valence_r2=0.89393 | val_arousal_r2=0.81728 | val_dominance_r2=0.89717
+Epoch 011 | train_mse=0.00526 | train_rmse=0.07192 | train_mae=0.05367 | train_valence_r2=0.89189 | train_arousal_r2=0.81155 | train_dominance_r2=0.89931 | val_mse=0.00509 | val_rmse=0.07031 | val_mae=0.05070 | val_valence_r2=0.89292 | val_arousal_r2=0.81262 | val_dominance_r2=0.89551
+Epoch 012 | train_mse=0.00523 | train_rmse=0.07179 | train_mae=0.05335 | train_valence_r2=0.89277 | train_arousal_r2=0.81076 | train_dominance_r2=0.89997 | val_mse=0.00495 | val_rmse=0.06928 | val_mae=0.05042 | val_valence_r2=0.89380 | val_arousal_r2=0.81557 | val_dominance_r2=0.90130
+  saved new best: val_mse=0.004950
+Epoch 013 | train_mse=0.00517 | train_rmse=0.07135 | train_mae=0.05301 | train_valence_r2=0.89319 | train_arousal_r2=0.81296 | train_dominance_r2=0.90218 | val_mse=0.00479 | val_rmse=0.06819 | val_mae=0.04925 | val_valence_r2=0.89665 | val_arousal_r2=0.82295 | val_dominance_r2=0.90460
+  saved new best: val_mse=0.004793
+Epoch 014 | train_mse=0.00512 | train_rmse=0.07099 | train_mae=0.05266 | train_valence_r2=0.89552 | train_arousal_r2=0.81546 | train_dominance_r2=0.90126 | val_mse=0.00481 | val_rmse=0.06833 | val_mae=0.04883 | val_valence_r2=0.89832 | val_arousal_r2=0.82320 | val_dominance_r2=0.90155
+Epoch 015 | train_mse=0.00508 | train_rmse=0.07073 | train_mae=0.05234 | train_valence_r2=0.89671 | train_arousal_r2=0.81545 | train_dominance_r2=0.90277 | val_mse=0.00482 | val_rmse=0.06834 | val_mae=0.04900 | val_valence_r2=0.89653 | val_arousal_r2=0.81914 | val_dominance_r2=0.90454
+Epoch 016 | train_mse=0.00506 | train_rmse=0.07060 | train_mae=0.05212 | train_valence_r2=0.89648 | train_arousal_r2=0.81568 | train_dominance_r2=0.90357 | val_mse=0.00506 | val_rmse=0.07009 | val_mae=0.05120 | val_valence_r2=0.88979 | val_arousal_r2=0.81032 | val_dominance_r2=0.90139
+Epoch 017 | train_mse=0.00503 | train_rmse=0.07027 | train_mae=0.05182 | train_valence_r2=0.89820 | train_arousal_r2=0.81969 | train_dominance_r2=0.90358 | val_mse=0.00486 | val_rmse=0.06870 | val_mae=0.04920 | val_valence_r2=0.89433 | val_arousal_r2=0.81438 | val_dominance_r2=0.90642
+Epoch 018 | train_mse=0.00500 | train_rmse=0.07018 | train_mae=0.05153 | train_valence_r2=0.89758 | train_arousal_r2=0.81913 | train_dominance_r2=0.90497 | val_mse=0.00471 | val_rmse=0.06756 | val_mae=0.04817 | val_valence_r2=0.89937 | val_arousal_r2=0.82366 | val_dominance_r2=0.90568
+  saved new best: val_mse=0.004713
+Epoch 019 | train_mse=0.00491 | train_rmse=0.06952 | train_mae=0.05100 | train_valence_r2=0.89965 | train_arousal_r2=0.82143 | train_dominance_r2=0.90583 | val_mse=0.00467 | val_rmse=0.06721 | val_mae=0.04731 | val_valence_r2=0.89907 | val_arousal_r2=0.82775 | val_dominance_r2=0.90709
+  saved new best: val_mse=0.004669
+Epoch 020 | train_mse=0.00496 | train_rmse=0.06989 | train_mae=0.05134 | train_valence_r2=0.89890 | train_arousal_r2=0.82132 | train_dominance_r2=0.90481 | val_mse=0.00468 | val_rmse=0.06744 | val_mae=0.04848 | val_valence_r2=0.89959 | val_arousal_r2=0.82871 | val_dominance_r2=0.90574
+Epoch 021 | train_mse=0.00491 | train_rmse=0.06952 | train_mae=0.05097 | train_valence_r2=0.90017 | train_arousal_r2=0.82283 | train_dominance_r2=0.90542 | val_mse=0.00476 | val_rmse=0.06796 | val_mae=0.04913 | val_valence_r2=0.89775 | val_arousal_r2=0.82883 | val_dominance_r2=0.90285
+Epoch 022 | train_mse=0.00489 | train_rmse=0.06934 | train_mae=0.05085 | train_valence_r2=0.90117 | train_arousal_r2=0.82208 | train_dominance_r2=0.90603 | val_mse=0.00472 | val_rmse=0.06762 | val_mae=0.04768 | val_valence_r2=0.89800 | val_arousal_r2=0.82708 | val_dominance_r2=0.90552
+Epoch 023 | train_mse=0.00485 | train_rmse=0.06909 | train_mae=0.05050 | train_valence_r2=0.90104 | train_arousal_r2=0.82420 | train_dominance_r2=0.90654 | val_mse=0.00462 | val_rmse=0.06687 | val_mae=0.04755 | val_valence_r2=0.90048 | val_arousal_r2=0.83029 | val_dominance_r2=0.90753
+  saved new best: val_mse=0.004616
+Epoch 024 | train_mse=0.00485 | train_rmse=0.06899 | train_mae=0.05046 | train_valence_r2=0.90118 | train_arousal_r2=0.82528 | train_dominance_r2=0.90637 | val_mse=0.00459 | val_rmse=0.06674 | val_mae=0.04737 | val_valence_r2=0.90197 | val_arousal_r2=0.83118 | val_dominance_r2=0.90729
+  saved new best: val_mse=0.004589
+Epoch 025 | train_mse=0.00479 | train_rmse=0.06860 | train_mae=0.05004 | train_valence_r2=0.90236 | train_arousal_r2=0.82703 | train_dominance_r2=0.90766 | val_mse=0.00459 | val_rmse=0.06670 | val_mae=0.04697 | val_valence_r2=0.90142 | val_arousal_r2=0.82915 | val_dominance_r2=0.90847
+Epoch 026 | train_mse=0.00482 | train_rmse=0.06885 | train_mae=0.05024 | train_valence_r2=0.90187 | train_arousal_r2=0.82557 | train_dominance_r2=0.90732 | val_mse=0.00460 | val_rmse=0.06680 | val_mae=0.04744 | val_valence_r2=0.90037 | val_arousal_r2=0.83141 | val_dominance_r2=0.90840
+Epoch 027 | train_mse=0.00477 | train_rmse=0.06846 | train_mae=0.04996 | train_valence_r2=0.90288 | train_arousal_r2=0.82704 | train_dominance_r2=0.90789 | val_mse=0.00467 | val_rmse=0.06718 | val_mae=0.04695 | val_valence_r2=0.89924 | val_arousal_r2=0.82760 | val_dominance_r2=0.90702
+Epoch 028 | train_mse=0.00473 | train_rmse=0.06824 | train_mae=0.04969 | train_valence_r2=0.90362 | train_arousal_r2=0.82795 | train_dominance_r2=0.90908 | val_mse=0.00455 | val_rmse=0.06636 | val_mae=0.04681 | val_valence_r2=0.90271 | val_arousal_r2=0.83282 | val_dominance_r2=0.90835
+  saved new best: val_mse=0.004545
+Epoch 029 | train_mse=0.00474 | train_rmse=0.06828 | train_mae=0.04977 | train_valence_r2=0.90384 | train_arousal_r2=0.83002 | train_dominance_r2=0.90837 | val_mse=0.00471 | val_rmse=0.06760 | val_mae=0.04794 | val_valence_r2=0.90130 | val_arousal_r2=0.82939 | val_dominance_r2=0.90206
+Epoch 030 | train_mse=0.00480 | train_rmse=0.06858 | train_mae=0.04989 | train_valence_r2=0.90317 | train_arousal_r2=0.82822 | train_dominance_r2=0.90832 | val_mse=0.00470 | val_rmse=0.06753 | val_mae=0.04799 | val_valence_r2=0.89546 | val_arousal_r2=0.83456 | val_dominance_r2=0.90693
+Epoch 031 | train_mse=0.00472 | train_rmse=0.06818 | train_mae=0.04961 | train_valence_r2=0.90403 | train_arousal_r2=0.83002 | train_dominance_r2=0.90894 | val_mse=0.00455 | val_rmse=0.06641 | val_mae=0.04636 | val_valence_r2=0.90311 | val_arousal_r2=0.82969 | val_dominance_r2=0.90861
+Epoch 032 | train_mse=0.00469 | train_rmse=0.06794 | train_mae=0.04938 | train_valence_r2=0.90512 | train_arousal_r2=0.82959 | train_dominance_r2=0.90948 | val_mse=0.00457 | val_rmse=0.06658 | val_mae=0.04675 | val_valence_r2=0.90234 | val_arousal_r2=0.83467 | val_dominance_r2=0.90626
+Epoch 033 | train_mse=0.00471 | train_rmse=0.06805 | train_mae=0.04933 | train_valence_r2=0.90509 | train_arousal_r2=0.82725 | train_dominance_r2=0.90924 | val_mse=0.00466 | val_rmse=0.06723 | val_mae=0.04700 | val_valence_r2=0.90041 | val_arousal_r2=0.83261 | val_dominance_r2=0.90436
+Epoch 034 | train_mse=0.00465 | train_rmse=0.06767 | train_mae=0.04894 | train_valence_r2=0.90586 | train_arousal_r2=0.83112 | train_dominance_r2=0.91031 | val_mse=0.00452 | val_rmse=0.06618 | val_mae=0.04622 | val_valence_r2=0.90276 | val_arousal_r2=0.83078 | val_dominance_r2=0.91025
+  saved new best: val_mse=0.004523
+Epoch 035 | train_mse=0.00468 | train_rmse=0.06780 | train_mae=0.04910 | train_valence_r2=0.90532 | train_arousal_r2=0.83175 | train_dominance_r2=0.91016 | val_mse=0.00453 | val_rmse=0.06621 | val_mae=0.04602 | val_valence_r2=0.90222 | val_arousal_r2=0.83558 | val_dominance_r2=0.90855
+Epoch 036 | train_mse=0.00468 | train_rmse=0.06785 | train_mae=0.04912 | train_valence_r2=0.90550 | train_arousal_r2=0.82990 | train_dominance_r2=0.90988 | val_mse=0.00447 | val_rmse=0.06578 | val_mae=0.04615 | val_valence_r2=0.90379 | val_arousal_r2=0.83648 | val_dominance_r2=0.91044
+  saved new best: val_mse=0.004466
+Epoch 037 | train_mse=0.00461 | train_rmse=0.06735 | train_mae=0.04869 | train_valence_r2=0.90625 | train_arousal_r2=0.83278 | train_dominance_r2=0.91142 | val_mse=0.00456 | val_rmse=0.06654 | val_mae=0.04716 | val_valence_r2=0.90361 | val_arousal_r2=0.83630 | val_dominance_r2=0.90513
+Epoch 038 | train_mse=0.00463 | train_rmse=0.06746 | train_mae=0.04891 | train_valence_r2=0.90551 | train_arousal_r2=0.83341 | train_dominance_r2=0.91030 | val_mse=0.00456 | val_rmse=0.06650 | val_mae=0.04744 | val_valence_r2=0.90072 | val_arousal_r2=0.83530 | val_dominance_r2=0.90897
+Epoch 039 | train_mse=0.00462 | train_rmse=0.06738 | train_mae=0.04875 | train_valence_r2=0.90617 | train_arousal_r2=0.83312 | train_dominance_r2=0.91127 | val_mse=0.00456 | val_rmse=0.06650 | val_mae=0.04669 | val_valence_r2=0.90214 | val_arousal_r2=0.83196 | val_dominance_r2=0.90829
+Epoch 040 | train_mse=0.00457 | train_rmse=0.06705 | train_mae=0.04841 | train_valence_r2=0.90677 | train_arousal_r2=0.83337 | train_dominance_r2=0.91221 | val_mse=0.00445 | val_rmse=0.06567 | val_mae=0.04572 | val_valence_r2=0.90439 | val_arousal_r2=0.83602 | val_dominance_r2=0.91054
+  saved new best: val_mse=0.004453
+Training complete.
+Best validation MSE: 0.004453
+Checkpoints saved to: emotion_gru_runs\run1

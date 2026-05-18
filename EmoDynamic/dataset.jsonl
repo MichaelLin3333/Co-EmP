@@ -1,0 +1,402 @@
+[
+  {
+    "id": "S001",
+    "scenario": {
+      "title": "Lost Luggage at Airport",
+      "description": "A traveler discovers their luggage is lost and must deal with a stressed airline agent at the service desk.",
+      "emotion_arc_hint": "frustration → negotiation → reluctant acceptance"
+    },
+    "personas": {
+      "A": {
+        "role": "airline customer service agent",
+        "traits": {
+          "big_five": {
+            "openness": 0.4,
+            "conscientiousness": 0.7,
+            "extraversion": 0.5,
+            "agreeableness": 0.6,
+            "neuroticism": 0.5
+          },
+          "style": "apologetic, procedural",
+          "background": "dealing with multiple complaints daily"
+        },
+        "initial_vad": { "v": -0.3, "a": 0.4, "d": 0.3 }
+      },
+      "B": {
+        "role": "passenger",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.6,
+            "extraversion": 0.7,
+            "agreeableness": 0.4,
+            "neuroticism": 0.7
+          },
+          "style": "impatient, demanding",
+          "background": "traveling for a business meeting"
+        },
+        "initial_vad": { "v": -0.7, "a": 0.8, "d": -0.2 }
+      }
+    }
+  },
+  {
+    "id": "S002",
+    "scenario": {
+      "title": "Roommate Conflict Over Cleaning",
+      "description": "Two college roommates argue about the messy state of their shared apartment.",
+      "emotion_arc_hint": "annoyance → heated argument → reluctant compromise"
+    },
+    "personas": {
+      "A": {
+        "role": "roommate A (neat)",
+        "traits": {
+          "big_five": {
+            "openness": 0.4,
+            "conscientiousness": 0.9,
+            "extraversion": 0.3,
+            "agreeableness": 0.6,
+            "neuroticism": 0.5
+          },
+          "style": "direct, irritated",
+          "background": "values order and cleanliness"
+        },
+        "initial_vad": { "v": -0.4, "a": 0.6, "d": 0.4 }
+      },
+      "B": {
+        "role": "roommate B (messy)",
+        "traits": {
+          "big_five": {
+            "openness": 0.7,
+            "conscientiousness": 0.3,
+            "extraversion": 0.6,
+            "agreeableness": 0.5,
+            "neuroticism": 0.4
+          },
+          "style": "carefree, defensive",
+          "background": "prioritizes personal freedom over rules"
+        },
+        "initial_vad": { "v": 0.1, "a": 0.3, "d": 0.6 }
+      }
+    }
+  },
+  {
+    "id": "S003",
+    "scenario": {
+      "title": "Breakup Conversation",
+      "description": "One partner initiates a breakup in a quiet café, leading to an emotional exchange.",
+      "emotion_arc_hint": "sadness → blame → bittersweet closure"
+    },
+    "personas": {
+      "A": {
+        "role": "initiator",
+        "traits": {
+          "big_five": {
+            "openness": 0.6,
+            "conscientiousness": 0.5,
+            "extraversion": 0.4,
+            "agreeableness": 0.6,
+            "neuroticism": 0.6
+          },
+          "style": "gentle but firm",
+          "background": "has been unhappy for months"
+        },
+        "initial_vad": { "v": -0.5, "a": 0.3, "d": 0.2 }
+      },
+      "B": {
+        "role": "recipient",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.6,
+            "extraversion": 0.5,
+            "agreeableness": 0.7,
+            "neuroticism": 0.8
+          },
+          "style": "pleading, hurt",
+          "background": "believed the relationship was improving"
+        },
+        "initial_vad": { "v": -0.8, "a": 0.7, "d": -0.5 }
+      }
+    }
+  },
+  {
+    "id": "S004",
+    "scenario": {
+      "title": "Doctor Tells Bad News",
+      "description": "A doctor must inform a patient about a serious diagnosis.",
+      "emotion_arc_hint": "calm professionalism → patient shock → supportive discussion"
+    },
+    "personas": {
+      "A": {
+        "role": "doctor",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.9,
+            "extraversion": 0.4,
+            "agreeableness": 0.7,
+            "neuroticism": 0.3
+          },
+          "style": "empathetic, composed",
+          "background": "experienced oncologist"
+        },
+        "initial_vad": { "v": 0.0, "a": 0.2, "d": 0.6 }
+      },
+      "B": {
+        "role": "patient",
+        "traits": {
+          "big_five": {
+            "openness": 0.6,
+            "conscientiousness": 0.5,
+            "extraversion": 0.6,
+            "agreeableness": 0.8,
+            "neuroticism": 0.9
+          },
+          "style": "anxious, trusting",
+          "background": "had mild symptoms, expected good results"
+        },
+        "initial_vad": { "v": -0.2, "a": 0.5, "d": 0.1 }
+      }
+    }
+  },
+  {
+    "id": "S005",
+    "scenario": {
+      "title": "Teacher-Parent Conference",
+      "description": "A parent meets with a teacher about their child's behavioral issues.",
+      "emotion_arc_hint": "defensiveness → understanding → collaborative plan"
+    },
+    "personas": {
+      "A": {
+        "role": "teacher",
+        "traits": {
+          "big_five": {
+            "openness": 0.6,
+            "conscientiousness": 0.8,
+            "extraversion": 0.5,
+            "agreeableness": 0.7,
+            "neuroticism": 0.3
+          },
+          "style": "patient, evidence-based",
+          "background": "years of experience with challenging students"
+        },
+        "initial_vad": { "v": 0.1, "a": 0.3, "d": 0.5 }
+      },
+      "B": {
+        "role": "parent",
+        "traits": {
+          "big_five": {
+            "openness": 0.3,
+            "conscientiousness": 0.7,
+            "extraversion": 0.4,
+            "agreeableness": 0.5,
+            "neuroticism": 0.6
+          },
+          "style": "protective, slightly confrontational",
+          "background": "worried about child's future"
+        },
+        "initial_vad": { "v": -0.3, "a": 0.6, "d": 0.2 }
+      }
+    }
+  },
+  {
+    "id": "S006",
+    "scenario": {
+      "title": "Celebrity Autograph Rejection",
+      "description": "A fan approaches a famous actor for an autograph but is politely refused.",
+      "emotion_arc_hint": "excitement → disappointment → reluctant understanding"
+    },
+    "personas": {
+      "A": {
+        "role": "actor",
+        "traits": {
+          "big_five": {
+            "openness": 0.7,
+            "conscientiousness": 0.6,
+            "extraversion": 0.8,
+            "agreeableness": 0.4,
+            "neuroticism": 0.5
+          },
+          "style": "polite but firm",
+          "background": "tired of constant public attention"
+        },
+        "initial_vad": { "v": -0.1, "a": 0.3, "d": 0.4 }
+      },
+      "B": {
+        "role": "fan",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.4,
+            "extraversion": 0.9,
+            "agreeableness": 0.6,
+            "neuroticism": 0.3
+          },
+          "style": "enthusiastic, persistent",
+          "background": "has followed actor's career for years"
+        },
+        "initial_vad": { "v": 0.8, "a": 0.9, "d": 0.7 }
+      }
+    }
+  },
+  {
+    "id": "S007",
+    "scenario": {
+      "title": "Elderly Parent Refuses Help",
+      "description": "An adult child offers to help an aging parent with daily tasks but is met with stubborn refusal.",
+      "emotion_arc_hint": "concern → frustration → emotional standoff"
+    },
+    "personas": {
+      "A": {
+        "role": "adult child",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.8,
+            "extraversion": 0.4,
+            "agreeableness": 0.7,
+            "neuroticism": 0.4
+          },
+          "style": "nurturing, worried",
+          "background": "recently noticed parent’s declining health"
+        },
+        "initial_vad": { "v": -0.2, "a": 0.5, "d": 0.3 }
+      },
+      "B": {
+        "role": "elderly parent",
+        "traits": {
+          "big_five": {
+            "openness": 0.2,
+            "conscientiousness": 0.6,
+            "extraversion": 0.3,
+            "agreeableness": 0.3,
+            "neuroticism": 0.6
+          },
+          "style": "dismissive, proud",
+          "background": "values independence and fears losing control"
+        },
+        "initial_vad": { "v": -0.4, "a": 0.5, "d": 0.2 }
+      }
+    }
+  },
+  {
+    "id": "S008",
+    "scenario": {
+      "title": "Charity Fundraiser Disagreement",
+      "description": "Two volunteers argue over how to allocate the funds raised for a cause.",
+      "emotion_arc_hint": "idealistic passion → ideological clash → uneasy compromise"
+    },
+    "personas": {
+      "A": {
+        "role": "volunteer A (pragmatic)",
+        "traits": {
+          "big_five": {
+            "openness": 0.4,
+            "conscientiousness": 0.9,
+            "extraversion": 0.5,
+            "agreeableness": 0.5,
+            "neuroticism": 0.4
+          },
+          "style": "logical, data-driven",
+          "background": "worked in non-profit finance"
+        },
+        "initial_vad": { "v": 0.3, "a": 0.4, "d": 0.6 }
+      },
+      "B": {
+        "role": "volunteer B (idealistic)",
+        "traits": {
+          "big_five": {
+            "openness": 0.8,
+            "conscientiousness": 0.5,
+            "extraversion": 0.7,
+            "agreeableness": 0.6,
+            "neuroticism": 0.5
+          },
+          "style": "passionate, emotional",
+          "background": "personal experience with the cause"
+        },
+        "initial_vad": { "v": 0.6, "a": 0.7, "d": 0.5 }
+      }
+    }
+  },
+  {
+    "id": "S009",
+    "scenario": {
+      "title": "Online Gaming Rage",
+      "description": "Two teammates in an online multiplayer game blame each other after a defeat.",
+      "emotion_arc_hint": "anger → insults → reluctant continue playing"
+    },
+    "personas": {
+      "A": {
+        "role": "gamer A (competitive)",
+        "traits": {
+          "big_five": {
+            "openness": 0.3,
+            "conscientiousness": 0.6,
+            "extraversion": 0.6,
+            "agreeableness": 0.2,
+            "neuroticism": 0.7
+          },
+          "style": "aggressive, blaming",
+          "background": "high rank, expects perfection"
+        },
+        "initial_vad": { "v": -0.6, "a": 0.9, "d": 0.5 }
+      },
+      "B": {
+        "role": "gamer B (casual)",
+        "traits": {
+          "big_five": {
+            "openness": 0.5,
+            "conscientiousness": 0.4,
+            "extraversion": 0.5,
+            "agreeableness": 0.7,
+            "neuroticism": 0.4
+          },
+          "style": "defensive, hurt",
+          "background": "plays for fun, not competitive"
+        },
+        "initial_vad": { "v": -0.3, "a": 0.4, "d": 0.2 }
+      }
+    }
+  },
+  {
+    "id": "S010",
+    "scenario": {
+      "title": "First Date Awkwardness",
+      "description": "Two people on a blind date realize they have very different expectations.",
+      "emotion_arc_hint": "nervous excitement → mismatch → polite farewell"
+    },
+    "personas": {
+      "A": {
+        "role": "dater A (romantic)",
+        "traits": {
+          "big_five": {
+            "openness": 0.7,
+            "conscientiousness": 0.5,
+            "extraversion": 0.6,
+            "agreeableness": 0.8,
+            "neuroticism": 0.5
+          },
+          "style": "hopeful, attentive",
+          "background": "believes in love at first sight"
+        },
+        "initial_vad": { "v": 0.6, "a": 0.7, "d": 0.4 }
+      },
+      "B": {
+        "role": "dater B (pragmatic)",
+        "traits": {
+          "big_five": {
+            "openness": 0.4,
+            "conscientiousness": 0.8,
+            "extraversion": 0.3,
+            "agreeableness": 0.5,
+            "neuroticism": 0.4
+          },
+          "style": "reserved, analytical",
+          "background": "recently divorced, cautious"
+        },
+        "initial_vad": { "v": 0.0, "a": 0.2, "d": 0.5 }
+      }
+    }
+  }
+]
