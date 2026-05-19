@@ -58,10 +58,6 @@ vad_source_eval_train/
 *.pth
 ~$MichaelLin_presentation.pptx
 
-# Temporary files
-tmp*
-*.tmp
-
 # Secrets
 .env
 
