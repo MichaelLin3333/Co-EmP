@@ -2,9 +2,9 @@
 
 This repository contains tools and models for integrated VAD (Valence-Arousal-Dominance) processing, training a VAD regressor, and a GRU encoder used for emotion modeling. The final step is running the visualization script `run_visual.sh`.
 
-- Presentation slides at [here]()
-- Paper draft at [here]()
-- Dataset at [here]()
+- Presentation slides at [here](https://github.com/MichaelLin3333/Co-EmP/blob/main/MichaelLin_presentation.pptx)
+- Paper draft at [here](https://github.com/MichaelLin3333/Co-EmP/blob/main/Co_EmP__Context_aware_Emotion_and_Personality_Alignment.pdf)
+- Dataset at [here](https://github.com/MichaelLin3333/Co-EmP/tree/main/EmoDynamic)
 
 ## Prerequisites
 - Python 3.8+ recommended
