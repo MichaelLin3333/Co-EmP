@@ -2,6 +2,10 @@
 
 This repository contains tools and models for integrated VAD (Valence-Arousal-Dominance) processing, training a VAD regressor, and a GRU encoder used for emotion modeling. The final step is running the visualization script `run_visual.sh`.
 
+- Presentation slides at [here]()
+- Paper draft at [here]()
+- Dataset at [here]()
+
 ## Prerequisites
 - Python 3.8+ recommended
 - Git
